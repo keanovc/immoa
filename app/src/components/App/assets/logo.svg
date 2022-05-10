@@ -1,0 +1,99 @@
+<svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1024 768"
+      height={768}
+      width={1024}
+      {...props}
+    >
+      <linearGradient
+        spreadMethod="pad"
+        y2="30%"
+        x2="-10%"
+        y1="120%"
+        x1="30%"
+        fill="#FFF"
+      >
+        <stop stopOpacity={1} stopColor="#fff" offset="0%" fill="#FFF" />
+        <stop stopOpacity={1} stopColor="#000" offset="100%" fill="#FFF" />
+      </linearGradient>
+      <linearGradient
+        gradientTransform="rotate(-30)"
+        spreadMethod="pad"
+        y2="30%"
+        x2="-10%"
+        y1="120%"
+        x1="30%"
+        fill="#FFF"
+      >
+        <stop stopOpacity={1} stopColor="#fff" offset="0%" fill="#FFF" />
+        <stop stopOpacity={1} stopColor="#ccc" offset="50%" fill="#FFF" />
+        <stop stopOpacity={1} stopColor="#000" offset="100%" fill="#FFF" />
+      </linearGradient>
+      <g
+        style={{
+          lineHeight: 1,
+          fontVariantLigatures: "normal",
+          textAlign: "center"
+        }}
+        fill="#FFF"
+        fontStyle="normal"
+        fontWeight={400}
+        fontSize="72px"
+        fontFamily="Brandmark Sans 10"
+        textAnchor="middle"
+        strokeWidth="0px"
+        strokeLinejoin="miter"
+        strokeMiterlimit={2}
+      >
+        <path
+          style={{
+            lineHeight: 1,
+            fontVariantLigatures: "normal",
+            textAlign: "center"
+          }}
+          d="M258.079 333.6c-3.168 0-5.904 2.736-5.904 5.904v88.992c0 3.168 2.736 5.904 5.904 5.904 3.312 0 6.048-2.736 6.048-5.904v-88.992c0-3.168-2.736-5.904-6.048-5.904z"
+          fill="#6D7CBC"
+          stroke="#6D7CBC"
+        />
+        <path
+          style={{
+            lineHeight: 1,
+            fontVariantLigatures: "normal",
+            textAlign: "center"
+          }}
+          d="M377.424 357.504c-1.728 0-3.744 1.152-4.752 2.592l-23.616 33.264-40.608-57.312c-1.152-1.44-2.88-2.448-4.896-2.448h-2.88c-3.168 0-5.904 2.736-5.904 5.904v88.992c0 3.168 2.736 5.904 5.904 5.904 3.312 0 6.048-2.736 6.048-5.904v-76.032l37.872 53.424a5.381 5.381 0 008.928 0l28.224-39.744c2.592-3.6 0-8.496-4.32-8.64zM397.44 333.6c-3.312 0-6.048 2.736-6.048 5.904v88.992c0 3.168 2.736 5.904 6.048 5.904 3.168 0 5.904-2.736 5.904-5.904v-88.992c0-3.168-2.736-5.904-5.904-5.904z"
+          fill="#7C8AC1"
+          stroke="#7C8AC1"
+        />
+        <path
+          style={{
+            lineHeight: 1,
+            fontVariantLigatures: "normal",
+            textAlign: "center"
+          }}
+          d="M516.768 357.504c-1.728 0-3.744 1.152-4.752 2.592L488.4 393.36l-40.608-57.312c-1.152-1.44-2.88-2.448-4.896-2.448h-2.88c-3.168 0-5.904 2.736-5.904 5.904v88.992c0 3.168 2.736 5.904 5.904 5.904 3.312 0 6.048-2.736 6.048-5.904v-76.032l37.872 53.424a5.381 5.381 0 008.928 0l28.224-39.744c2.592-3.6 0-8.496-4.32-8.64zm20.016-23.904c-3.312 0-6.048 2.736-6.048 5.904v88.992c0 3.168 2.736 5.904 6.048 5.904 3.168 0 5.904-2.736 5.904-5.904v-88.992c0-3.168-2.736-5.904-5.904-5.904z"
+          fill="#8B98C6"
+          stroke="#8B98C6"
+        />
+        <path
+          style={{
+            lineHeight: 1,
+            fontVariantLigatures: "normal",
+            textAlign: "center"
+          }}
+          d="M619.104 332.16c-27.792 0-50.4 23.184-50.4 51.84 0 28.656 22.608 51.84 50.4 51.84 27.792 0 50.4-23.184 50.4-51.84 0-28.656-22.608-51.84-50.4-51.84zm0 91.728c-21.168 0-38.448-17.856-38.448-39.888 0-22.032 17.28-39.888 38.448-39.888s38.448 17.856 38.448 39.888c0 22.032-17.28 39.888-38.448 39.888z"
+          fill="#9AA5CB"
+          stroke="#9AA5CB"
+        />
+        <path
+          style={{
+            lineHeight: 1,
+            fontVariantLigatures: "normal",
+            textAlign: "center"
+          }}
+          d="M771.331 425.904l-36.144-88.416c-1.008-2.304-3.312-3.888-5.76-3.888h-3.024c-2.592 0-4.752 1.584-5.76 3.888l-36.288 88.416c-1.584 3.744 1.008 8.064 5.184 8.496h43.776c3.312 0 5.904-2.736 5.904-5.904 0-3.312-2.592-6.048-5.904-6.048h-34.128l26.928-65.664 1.728-4.32 1.728 4.32 30.384 73.728c.864 2.304 3.168 3.888 5.76 3.888 4.32 0 7.344-4.464 5.616-8.496z"
+          fill="#A9B3D0"
+          stroke="#A9B3D0"
+        />
+      </g>
+    </svg>
