@@ -1,0 +1,107 @@
+{
+    "home": {
+        "title": "Home",
+        "realtor": "REAL ESTATE AGENT",
+        "lorem": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut quia asperiores alias vero magnam recusandae adipisci ad vitae laudantium quod rem voluptatem eos accusantium cumque.",
+        "buy": "Buy A Property",
+        "rent": "Rent A Property",
+        "or": "OR"
+    },
+    "nav": {
+        "buy": "Buy",
+        "rent": "Rent",
+        "contact": "Contact",
+        "favorites": "Favorites",
+        "profile": "Profile",
+        "admin": {
+            "dashboard": "Dashboard",
+            "users": "Users",
+            "properties": "Properties",
+            "realtors": "Realtors",
+            "edit": "Edit"
+        }
+    },
+    "footer": {
+        "about": "About",
+        "privacypolicy": "Privacy Policy",
+        "licensing": "Licensing",
+        "rights": "All Rights Reserved"
+    },
+    "favorites": {
+        "title": "Favorites"
+    },
+    "profile": {
+        "title": "Profile"
+    },
+    "contact": {
+        "title": "Contact"
+    },
+    "signin": {
+        "title": "Sign In",
+        "account": "Don't have an account?",
+        "signup": "Sign Up"
+    },
+    "signup": {
+        "title": "Sign Up",
+        "account": "Already have an account?",
+        "signin": "Sign In"
+    },
+    "users": {
+        "title": "Users",
+        "overview": {
+            "title": "Overview",
+            "name": "Name",
+            "email": "Email",
+            "role": "Role",
+            "created": "Created",
+            "updated": "Updated",
+            "actions": "Actions"
+        },
+        "edit": "Edit User",
+        "create": "Create User"
+    },
+    "properties": {
+        "title": "Properties",
+        "buy": {
+            "title": "Buy",
+            "text": "BUY A HOME WITH US"
+        },
+        "rent": {
+            "title": "Rent",
+            "text": "RENT A HOME WITH US"
+        }
+    },
+    "realtors": {
+        "title": "Realtors",
+        "overview": {
+            "title": "Overview",
+            "name": "Name",
+            "email": "Email",
+            "created": "Created",
+            "updated": "Updated",
+            "actions": "Actions"
+        }
+    },
+    "buttons": {
+        "signout": "Sign Out",
+        "signin": "Sign In",
+        "signup": "Sign Up",
+        "seemore": "See More",
+        "send": "Send",
+        "createaccount": "Create Account",
+        "edit": "Edit",
+        "create": "Create",
+        "adduser": "Add User",
+        "addproperty": "Add Property"
+    },
+    "fields": {
+        "email": "Email",
+        "firstname": "First Name",
+        "lastname": "Last Name",
+        "message": "Message",
+        "password": "Password",
+        "admin": "ADMIN",
+        "realtor": "REALTOR",
+        "user": "USER"
+    }
+}

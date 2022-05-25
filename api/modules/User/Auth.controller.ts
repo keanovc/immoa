@@ -1,6 +1,7 @@
 import { NextFunction, Response } from "express";
 import { createToken } from "../../middleware/auth";
 import { AuthRequest } from "../../middleware/auth/auth.types";
+import UserController from "./User.controller";
 
 export default class AuthController {
     login = async (req: AuthRequest, res: Response, next: NextFunction) => {
@@ -10,4 +11,9 @@ export default class AuthController {
             token: createToken(user),
         });
     };
+
+    register = async (req: AuthRequest, res: Response, next: NextFunction) => {
+        const userController = new UserController();
+        await userController.create(req, res, next);
+    }
 }

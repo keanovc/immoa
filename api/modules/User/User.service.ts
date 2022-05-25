@@ -36,8 +36,16 @@ export default class UserService {
     };
 
     create = async (body) => {
-        const user = await this.repository.save(this.repository.create(body));
-        return user;
+        const user = await this.findOneBy({ email: body.email });
+        if(!user){
+            const user = await this.repository.save(this.repository.create(body));
+            const obj = {
+                user:{
+                    ...user,
+                },
+            }
+            return obj;
+        }
     };
 
     update = async (id: number, body) => {

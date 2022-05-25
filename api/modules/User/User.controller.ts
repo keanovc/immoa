@@ -38,14 +38,18 @@ export default class UserController {
         res: Response,
         next: NextFunction
     ) => {
-        const user = await this.userService.update(
-            parseInt(req.params.id),
-            req.body
-        );
-        if (!user) {
-            next(new NotFoundError());
+        try {
+            const user = await this.userService.update(
+                parseInt(req.params.id),
+                req.body
+            );
+            if (!user) {
+                next(new NotFoundError());
+            }
+            return res.json(user);
+        } catch (err) {
+            next(err);
         }
-        return res.json(user);
     };
 
     delete = async (
