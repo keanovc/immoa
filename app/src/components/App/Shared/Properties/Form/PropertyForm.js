@@ -2,7 +2,6 @@ import useForm from "../../../../../core/hooks/useForm";
 import { useTranslation } from "react-i18next";
 import Input from "../../../../Design/Form/Input";
 import * as yup from "yup";
-import FileInput from "../../../../Design/Form/FileInput.js";
 import Select from "../../../../Design/Form/Select";
 import Textarea from "../../../../Design/Form/Textarea";
 
