@@ -2,7 +2,7 @@ import useForm from "../../../../../core/hooks/useForm";
 import { useTranslation } from "react-i18next";
 import Input from "../../../../Design/Form/Input";
 import * as yup from "yup";
-import FileInput from "../../../../Design/Form/FileInput.Js";
+import FileInput from "../../../../Design/Form/FileInput.js";
 import Select from "../../../../Design/Form/Select";
 import Textarea from "../../../../Design/Form/Textarea";
 
@@ -55,17 +55,17 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                             <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF</p>
                         </div>
-                        <input id="image" name="image" type="text" className="hidden" onChange={handleChange} disabled={disabled} value="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"/>
+                        <FileInput
+                            label={t('properties.image')}
+                            name="image"
+                            accept="image/*"
+                            onChange={handleChange}
+                            value={values.image}
+                            error={errors.image}
+                            disabled={disabled}
+                            className="hidden"
+                        />
                     </label>
-                    <FileInput
-                        label={t('properties.image')}
-                        name="image"
-                        accept="image/*"
-                        onChange={handleChange}
-                        value={values.image}
-                        error={errors.image}
-                        disabled={disabled}
-                    />
                 </div> 
             </div> */}
             <div className="flex flex-wrap -mx-3 mb-3">
