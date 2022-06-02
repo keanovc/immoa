@@ -17,7 +17,7 @@
             "dashboard": "Dashboard",
             "users": "Users",
             "properties": "Properties",
-            "realtors": "Realtors",
+            "agencies": "Agencies",
             "edit": "Edit"
         }
     },
@@ -58,7 +58,8 @@
             "actions": "Actions"
         },
         "edit": "Edit User",
-        "create": "Create User"
+        "create": "Create User",
+        "password_print": "Leave blank if you don't want to change the password"
     },
     "properties": {
         "title": "Properties",
@@ -69,10 +70,12 @@
         "rent": {
             "title": "Rent",
             "text": "RENT A HOME WITH US"
-        }
+        },
+        "edit": "Edit Property",
+        "create": "Create Property"
     },
-    "realtors": {
-        "title": "Realtors",
+    "agencies": {
+        "title": "Agencies",
         "overview": {
             "title": "Overview",
             "name": "Name",
@@ -80,7 +83,9 @@
             "created": "Created",
             "updated": "Updated",
             "actions": "Actions"
-        }
+        },
+        "edit": "Edit Agency",
+        "create": "Create Agency"
     },
     "buttons": {
         "signout": "Sign Out",
@@ -92,7 +97,8 @@
         "edit": "Edit",
         "create": "Create",
         "adduser": "Add User",
-        "addproperty": "Add Property"
+        "addproperty": "Add Property",
+        "addagency": "Add Agency"
     },
     "fields": {
         "email": "Email",
@@ -100,8 +106,23 @@
         "lastname": "Last Name",
         "message": "Message",
         "password": "Password",
+        "phone": "Phone",
         "admin": "ADMIN",
         "realtor": "REALTOR",
-        "user": "USER"
+        "user": "USER",
+        "name": "Name",
+        "address": "Address",
+        "city": "City",
+        "zipcode": "Zip Code",
+        "price": "Price",
+        "rooms": "Rooms",
+        "bathrooms": "Bathrooms",
+        "area": "Area",
+        "year": "Year",
+        "description": "Description",
+        "image": "Image",
+        "type": "Type",
+        "buy": "Buy",
+        "rent": "Rent"
     }
 }

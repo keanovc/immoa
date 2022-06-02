@@ -22,9 +22,9 @@ const AdminHeader = () => {
             label: t("nav.admin.properties"),
         },
         {
-            href: AdminRoutes.Realtors,
-            isActive: location.pathname.includes(AdminRoutes.Realtors),
-            label: t("nav.admin.realtors"),
+            href: AdminRoutes.Agencies,
+            isActive: location.pathname.includes(AdminRoutes.Agencies),
+            label: t("nav.admin.agencies"),
         },
     ];
 

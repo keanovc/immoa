@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { Outlet } from "react-router-dom";
-import useTitle from "../../../../core/hooks/useTitle";
+import useTitle from "../../../../../core/hooks/useTitle";
 
-const RealtorsLayout = () => {
+const AgenciesLayout = () => {
     const { t } = useTranslation();
     useTitle(t("realtors.title"));
 
@@ -13,4 +13,4 @@ const RealtorsLayout = () => {
     );
 };
 
-export default RealtorsLayout;
+export default AgenciesLayout;

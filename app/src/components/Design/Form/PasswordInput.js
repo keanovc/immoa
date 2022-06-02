@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import * as MaterialDesign from "react-icons/md";
+import Input from './Input';
 
 const PasswordInput = ({onChange, value}) => {
     const [isVisable, setIsVisable] = useState(false)
@@ -9,11 +10,13 @@ const PasswordInput = ({onChange, value}) => {
     }
 
   return (
-    <div className="flex relative mt-3 ">
-        <input type={isVisable ? 'text' : 'password' } required className='block border border-gray-300 w-full p-3 rounded mb-4' placeholder='Password' name="password" value={value} onChange={onChange} />
-        <button type='button' className={'absolute top-1/2 right-2 transform -translate-x-1/2 -translate-y-1/2 '} onClick={handleClick}>
+    <div className="relative">
+        <Input type={isVisable ? 'text' : 'password'} name={'password'} placeholder={'Password'} value={value} onChange={onChange} />
+        <button type='button' className={'absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5'} onClick={handleClick}>
           {
-            isVisable ? <MaterialDesign.MdVisibility /> : <MaterialDesign.MdVisibilityOff />
+            isVisable ? 
+            <MaterialDesign.MdVisibility className='text-xl'/> : 
+            <MaterialDesign.MdVisibilityOff className='text-xl'/>
           }
         </button>
     </div>

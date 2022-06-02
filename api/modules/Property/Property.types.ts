@@ -1,3 +1,5 @@
+import Agency from "../Agency/Agency.entity";
+
 export interface PropertyBody {
     zipCode: string;
     address: string;
@@ -10,4 +12,5 @@ export interface PropertyBody {
     description: string;
     image: string;
     type: string;
+    agency: Agency;
 }

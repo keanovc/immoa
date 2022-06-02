@@ -1,6 +1,7 @@
 import Property from "./Property.entity";
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../database/DataSource";
+import { PropertyBody } from "./Property.types";
 
 export default class PropertyService {
     private repository: Repository<Property>;
@@ -34,10 +35,13 @@ export default class PropertyService {
         return newProperty;
     }
 
-    update = async (id: number, body) => {
+    update = async (id: number, body: PropertyBody) => {
         let property = await this.findOne(id);
         if (property) {
-            property = await this.repository.save({ ...property, ...body });
+            property = await this.repository.save({
+                ...property,
+                ...body
+            });
         }
         return property;
     }

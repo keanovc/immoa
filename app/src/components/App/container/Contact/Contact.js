@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import useTitle from "../../../../core/hooks/useTitle";
 import { Link } from "react-router-dom";
+import Input from "../../../Design/Form/Input";
 
 const Contact = () => {
     const { t } = useTranslation();
@@ -14,30 +15,15 @@ const Contact = () => {
                     <h1 className="mb-8 text-3xl text-center">{t('contact.title')}</h1>
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <input 
-                                type="text"
-                                className="block border border-gray-300 w-full p-3 rounded mb-4"
-                                name="fname"
-                                placeholder={t('fields.firstname')}
-                                required />
+                            <Input type={'text'} name={'name'} placeholder={t('fields.firstname')} />
                             </div>
                             <div className="w-full md:w-1/2 px-3">
-                            <input 
-                                type="text"
-                                className="block border border-gray-300 w-full p-3 rounded mb-4"
-                                name="lname"
-                                placeholder={t('fields.lastname')}
-                                required />
+                            <Input type={'text'} name={'surname'} placeholder={t('fields.lastname')} />
                         </div>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full px-3">
-                            <input 
-                                type="email"
-                                className="block border border-gray-300 w-full p-3 rounded mb-4"
-                                name="email"
-                                placeholder={t('fields.email')}
-                                required />
+                            <Input type={'email'} name={'email'} placeholder={t('fields.email')} />
                         </div>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-6">

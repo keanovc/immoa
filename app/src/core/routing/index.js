@@ -21,12 +21,17 @@ const ProfileRoutes = {
 const AdminRoutes = {
     Index: "/admin",
     Users: "/admin/users",
-    EditUser: "/admin/users/:id",
     AddUser: "/admin/users/add",
+    DetailUser: "/admin/users/:id",
+    EditUser: "/admin/users/:id/edit",
     Properties: "/admin/properties",
-    EditProperty: "/admin/properties/:id",
+    DetailProperty: "/admin/properties/:id",
+    EditProperty: "/admin/properties/:id/edit",
     AddProperty: "/admin/properties/add",
-    Realtors: "/admin/realtors",
+    Agencies: "/admin/agencies",
+    AddAgency: "/admin/agencies/add",
+    DetailAgency: "/admin/agencies/:id",
+    EditAgency: "/admin/agencies/:id/edit",
 };
 
 // replaces : values with values from object

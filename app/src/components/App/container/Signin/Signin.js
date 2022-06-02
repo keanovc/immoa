@@ -3,11 +3,12 @@ import useMutation from '../../../../core/hooks/useMutation';
 import { useAuthContext } from '../../Auth/AuthProvider';
 import { AuthRoutes } from '../../../../core/routing';
 
-import './Signin.scss';
 import { Link } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import useTitle from "../../../../core/hooks/useTitle";
 import PasswordInput from '../../../Design/Form/PasswordInput';
+import Input from '../../../Design/Form/Input';
+import * as MaterialDesign from "react-icons/md";
 
 const Signin = () => {
     const { login } = useAuthContext();
@@ -41,20 +42,13 @@ const Signin = () => {
     };
 
     return (
-        <header className="sign bg-center bg-no-repeat bg-center bg-cover h-screen relative flex flex-col">
+        <header className="sign bg-center bg-no-repeat bg-cover h-screen relative flex flex-col">
             <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                 <form onSubmit={handleSubmit} className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
                     <p className='text-red-500'>{error}</p>
-                    <Link to="/" className='text-2xl'>x</Link>
+                    <Link to="/" className='text-2xl'><MaterialDesign.MdClose className='text-2xl'/></Link>
                     <h1 className="mb-8 text-3xl text-center">{t('signin.title')}</h1>
-                    <input 
-                        type="text"
-                        className="block border border-gray-300 w-full p-3 rounded mb-4"
-                        name="email"
-                        placeholder={t('fields.email')}
-                        value={data.email}
-                        onChange={handleChange}
-                        required />
+                    <Input type={'email'} name={'email'} placeholder={t('fields.email')} value={data.email} onChange={handleChange} />
                         
                     <PasswordInput value={data.password} onChange={handleChange}/>
 

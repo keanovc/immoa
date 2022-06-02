@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from "express";
-import NotFoundError from "../../errors/NotFoundError";
-import { AuthRequest } from "../../middleware/auth/auth.types";
+import NotFoundError from "../../errors/NotFoundError"; 
 import PropertyService from "./Property.service";
+import { AuthRequest } from "../../middleware/auth/auth.types";
+import { PropertyBody } from "./Property.types";
 
 export default class PropertyController {
     private propertyService: PropertyService;
@@ -35,24 +36,14 @@ export default class PropertyController {
         const property = await this.propertyService.create(req.body);
         return res.json(property);
     }
-    
+
     update = async (
-        req: Request<{ id: string }>,
+        req: AuthRequest<{ id: number }, {}, PropertyBody>,
         res: Response,
         next: NextFunction
     ) => {
-        try {
-            const property = await this.propertyService.update(
-                parseInt(req.params.id),
-                req.body
-            );
-            if (!property) {
-                next(new NotFoundError());
-            }
-            res.status(200).json(property);
-        } catch (error) {
-            next(error);
-        }
+        const property = await this.propertyService.update(req.params.id, req.body);
+        return res.json(property);
     }
 
     delete = async (

@@ -40,3 +40,23 @@
     transform: rotate(360deg);
   }
 }
+
+header.sign {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../App/assets/background3.jpg");
+}
+
+header.buy{
+  background-image: url("../App/assets/background4.jpg");
+}
+
+header.rent{
+  background-image: url("../App/assets/background.jpg");
+}
+
+header.profile{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../App/assets/profile.jpg");
+}
+
+header.favourites{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../App/assets/background2.jpg");
+}

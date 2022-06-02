@@ -21,7 +21,4 @@ export default class Client extends BaseEntity {
     @IsDefined()
     @Column()
     contactName: string;
-
-    @OneToMany(() => Property, (property) => property.client)
-    projects: Property[];
 }

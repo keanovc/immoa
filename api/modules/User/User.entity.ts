@@ -1,13 +1,17 @@
 import { compare, hash } from "bcrypt";
-import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { BaseEntity } from "../BaseEntity";
 import { UserRole } from "./User.constants";
 import { IsDefined, IsEmail } from "class-validator";
+import Agency from "../Agency/Agency.entity";
 
 @Entity()
 export default class User extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
+
+    @ManyToOne(() => Agency, agency => agency.users)
+    agency: Agency;
 
     @IsDefined()
     @Column()
