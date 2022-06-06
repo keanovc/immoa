@@ -16,7 +16,6 @@ const AgencyEditScreen = () => {
       mutate(`${process.env.REACT_APP_API_URL}/agencies/${agency.id}`, {
           method: "PATCH",
           data,
-          multipart: true,
           onSuccess: () => {
             onAgencyUpdate();
             navigate(route(AdminRoutes.DetailAgency, { id: agency.id }));

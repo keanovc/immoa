@@ -16,7 +16,6 @@ const UserEditScreen = () => {
       mutate(`${process.env.REACT_APP_API_URL}/users/${user.id}`, {
           method: "PATCH",
           data,
-          multipart: true,
           onSuccess: () => {
             onUserUpdate();
             navigate(route(AdminRoutes.DetailUser, { id: user.id }));

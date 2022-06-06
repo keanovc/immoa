@@ -15,7 +15,6 @@ const UserAddScreen = () => {
       mutate(`${process.env.REACT_APP_API_URL}/users`, {
           method: "POST",
           data,
-          multipart: true,
           onSuccess: () => {
               navigate(AdminRoutes.Users);
           },

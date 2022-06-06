@@ -15,7 +15,6 @@ const AgenciesAddScreen = () => {
       mutate(`${process.env.REACT_APP_API_URL}/agencies`, {
           method: "POST",
           data,
-          multipart: true,
           onSuccess: () => {
               navigate(AdminRoutes.Agencies);
           },

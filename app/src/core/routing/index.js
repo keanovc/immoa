@@ -16,6 +16,7 @@ const ProfileRoutes = {
     Index: "/profile",
     Favorites: "/profile/favorites",
     Profile: "/profile/:id",
+    Edit: "/profile/:id/edit",
 };
 
 const AgencyRoutes = {

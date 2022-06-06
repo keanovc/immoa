@@ -16,7 +16,6 @@ const PropertyEditScreen = () => {
       mutate(`${process.env.REACT_APP_API_URL}/properties/${property.id}`, {
           method: "PATCH",
           data,
-          multipart: true,
           onSuccess: () => {
             onPropertyUpdate();
             navigate(route(AdminRoutes.DetailProperty, { id: property.id }));
