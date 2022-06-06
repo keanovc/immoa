@@ -45,7 +45,7 @@ const defaultData = {
     description: "",
     type: "",
     bor: "",
-    sold: 0,
+    sold: false,
     agencyId: null,
 };
 
@@ -80,8 +80,8 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     error={errors.sold}
                     disabled={disabled}
                     options={[
-                        { value: 0, label: t('properties.available') },
-                        { value: 1, label: t('properties.sold') },
+                        { value: false, label: t('properties.available') },
+                        { value: true, label: t('properties.sold') },
                     ]}
                 />
             </div>

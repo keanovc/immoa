@@ -14,7 +14,6 @@ const getSchema = (isUpdate) => {
         email: yup.string().email().required(),
         password: isUpdate ? yup.string() : yup.string().required(),
         role: yup.string().required(),
-        agencyId: yup.string().required(),
     });
 };
 
