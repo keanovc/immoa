@@ -63,11 +63,11 @@ export default class PropertyController {
         res: Response,
         next: NextFunction
     ) => {
-        // const image = getImage(req);
+        const image = getImage(req);
 
-        // if (image) {
-        //     req.body.image = image;
-        // }
+        if (image) {
+            req.body.image = image;
+        }
         
         const { body } = req;
 

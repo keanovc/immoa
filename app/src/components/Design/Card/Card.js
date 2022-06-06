@@ -2,14 +2,14 @@ import { formatPrice } from '../../../core/modules/users/utils';
 import { HomeRoutes } from '../../../core/routing';
 import { Link } from 'react-router-dom';
 import { route } from '../../../core/routing';
-
+import { getImagePath } from '../../../core/helpers/api';
 
 export const Card = ({ property, auth }) => {
     return (
             <div className="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
                 <Link to={route(HomeRoutes.Detail, { id: property.id, })}>
                     <div className="bg-white shadow-xl rounded-lg overflow-hidden transform transition duration-300 hover:scale-105">
-                        <div className="bg-cover bg-center h-56 p-4" style={{ backgroundImage: `url(${property.image})` }}>
+                        <div className="bg-cover bg-center h-56 p-4" style={{ backgroundImage: `url(${getImagePath(property.image)})` }}>
                             {
                                 property.sold === true ? (
                                     <p className='absolute inline-flex mt-3 ml-3 px-3 py-2 rounded-lg z-10 bg-red-500 text-sm font-medium text-white select-none'>Sold</p>
@@ -17,11 +17,6 @@ export const Card = ({ property, auth }) => {
                                     <p className='absolute inline-flex mt-3 ml-3 px-3 py-2 rounded-lg z-10 bg-green-500 text-sm font-medium text-white select-none'>Available</p>
                                 )
                             }
-                            {/* <div className="flex justify-end">
-                                <button><svg className="h-6 w-6 text-white fill-current hover:text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path d="M12.76 3.76a6 6 0 0 1 8.48 8.48l-8.53 8.54a1 1 0 0 1-1.42 0l-8.53-8.54a6 6 0 0 1 8.48-8.48l.76.75.76-.75zm7.07 7.07a4 4 0 1 0-5.66-5.66l-1.46 1.47a1 1 0 0 1-1.42 0L9.83 5.17a4 4 0 1 0-5.66 5.66L12 18.66l7.83-7.83z"></path>
-                                </svg></button>
-                            </div> */}
                         </div>
                         <div className="p-4">
 

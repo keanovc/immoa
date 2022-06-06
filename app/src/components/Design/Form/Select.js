@@ -25,10 +25,10 @@ const Select = ({ name, options = [], onChange, value, error, disabled }) => {
 Select.propTypes = {
     label: PropTypes.string,
     name: PropTypes.string.isRequired,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
     options: PropTypes.arrayOf(
         PropTypes.shape({
-            value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+            value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
             label: PropTypes.string,
         })
     ),

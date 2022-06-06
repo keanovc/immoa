@@ -7,6 +7,7 @@ import { useAuthContext } from "../../Auth/AuthProvider";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthRoutes } from "../../../../core/routing";
+import { getImagePath } from "../../../../core/helpers/api";
 
 const Detail = () => {
   const { t } = useTranslation();
@@ -32,7 +33,7 @@ const Detail = () => {
       {
         data ? (
           <>
-            <header id="up" className="bg-center bg-no-repeat bg-cover h-[60vh] relative" style={{ backgroundImage: `url(${data.image})` }}>
+            <header id="up" className="bg-center bg-no-repeat bg-cover h-[60vh] relative" style={{ backgroundImage: `url(${getImagePath(data.image)})` }}>
               <div className="h-full bg-opacity-50 bg-black flex items-center justify-center flex-col"></div>
             </header>
 

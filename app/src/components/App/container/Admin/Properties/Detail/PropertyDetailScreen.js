@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Link, useOutletContext } from "react-router-dom";
+import { getImagePath } from "../../../../../../core/helpers/api";
 import useTitle from "../../../../../../core/hooks/useTitle";
 import { AdminRoutes, route } from "../../../../../../core/routing";
 
@@ -14,7 +15,7 @@ const PropertyDetailScreen = () => {
             <div className="flex items-center justify-center h-screen bg-gray-200 mt-36 mb-10 md:mt-0 md:mb-0">
                 <div className="bg-white font-semibold text-center rounded-3xl border shadow-lg w-10/12 lg:w-6/12 xl:w-3/12">
                     <div className="relative">
-                        <img className="mb-3 w-full h-auto rounded-xl shadow-lg mx-auto" src={property.image} alt="person"/>
+                        <img className="mb-3 w-full h-auto rounded-xl shadow-lg mx-auto" src={getImagePath(property.image)} alt="person"/>
                         {
                             property.sold === true ?
                                 <div className="badge absolute top-5 right-5 bg-red-500 m-1 text-gray-200 p-1 px-2 text-md font-bold rounded">{t("properties.sold")}</div>
