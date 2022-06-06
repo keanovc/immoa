@@ -2,12 +2,16 @@ import { NextFunction, Request, Response } from "express";
 import NotFoundError from "../../errors/NotFoundError";
 import { AuthRequest } from "../../middleware/auth/auth.types";
 import UserService from "./User.service";
+import { UserBody } from "./User.types";
+import AgencyService from "../Agency/Agency.service";
 
 export default class UserController {
     private userService: UserService;
+    private agencyService: AgencyService;
 
     constructor() {
         this.userService = new UserService();
+        this.agencyService = new AgencyService();
     }
 
     all = async (req: AuthRequest, res: Response, next: NextFunction) => {
@@ -27,17 +31,30 @@ export default class UserController {
         return res.json(user);
     };
 
-    create = async (req: AuthRequest, res: Response, next: NextFunction) => {
-        const user = await this.userService.create(req.body);
+    create = async (
+        req: AuthRequest<{}, {}, UserBody>,
+        res: Response,
+        next: NextFunction
+    ) => {
+        const { body } = req;
+        if (body.agencyId) {
+            body.agency = await this.agencyService.findOne(body.agencyId);
+        }
+        const user = await this.userService.create(body);
         return res.json(user);
     };
 
     update = async (
-        req: AuthRequest<{ id: string }>,
+        req: AuthRequest<{ id: string }, {}, UserBody>,
         res: Response,
         next: NextFunction
     ) => {
         try {
+            const { body } = req;
+
+            if (body.agencyId) {
+                body.agency = await this.agencyService.findOne(body.agencyId);
+            }
             const user = await this.userService.update(
                 parseInt(req.params.id),
                 req.body

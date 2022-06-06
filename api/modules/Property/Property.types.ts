@@ -4,13 +4,15 @@ export interface PropertyBody {
     zipCode: string;
     address: string;
     city: string;
-    minPrice: number;
-    maxPrice: number;
+    price: number;
     rooms: number;
     bathrooms: number;
     area: number;
     description: string;
-    image: string;
+    image?: string | null;
     type: string;
-    agency: Agency;
+    bor: string;
+    sold: boolean;
+    agency?: Agency;
+    agencyId: number;
 }

@@ -33,9 +33,13 @@ export default class Agency extends BaseEntity {
     @Column()
     phone: string;
 
-    @OneToMany(() => Property, (property) => property.agency)
+    @OneToMany(() => Property, (property) => property.agency, {
+        cascade: true,
+    })
     properties: Property[];
 
-    @OneToMany(() => User, (user) => user.agency)
+    @OneToMany(() => User, (user) => user.agency, {
+        cascade: true,
+    })
     users: User[];
 }

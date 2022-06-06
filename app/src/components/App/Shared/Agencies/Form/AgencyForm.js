@@ -11,18 +11,34 @@ const schema = yup.object().shape({
     zipCode: yup.string().required(),
     city: yup.string().required(),
     phone: yup.string().required(),
+    userId: yup.string().required(),
 });
+
+const transformInitialData = (initialData) => {
+    if (initialData.user) {
+        initialData = {
+            ...initialData,
+            userId: initialData.user.id,
+        };
+    }
+    return initialData;
+};
+
+const defaultData = {
+    name: "",
+    description: "",
+    address: "",
+    zipCode: "",
+    city: "",
+    phone: "",
+    userId: null,
+};
 
 const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
     const { t } = useTranslation();
     const { values, handleChange, handleSubmit, errors } = useForm(schema, {
-        name: "",
-        description: "",
-        address: "",
-        zipCode: "",
-        city: "",
-        phone: "",
-        ...initialData,
+        ...defaultData,
+        ...transformInitialData(initialData),
     });
 
     const handleData = (values) => {

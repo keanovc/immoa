@@ -44,8 +44,7 @@ export default class Property extends BaseEntity {
     @Column()
     description: string;
 
-    @IsDefined()
-    @Column()
+    @Column({ nullable: true })
     image: string;
 
     @IsDefined()

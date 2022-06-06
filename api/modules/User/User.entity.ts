@@ -13,20 +13,20 @@ export default class User extends BaseEntity {
     @ManyToOne(() => Agency, agency => agency.users)
     agency: Agency;
 
-    @IsDefined()
+    @IsDefined({ always: true })
     @Column()
     name: string;
 
-    @IsDefined()
+    @IsDefined({ always: true })
     @Column()
     surname: string;
 
-    @IsDefined()
-    @IsEmail()
+    @IsDefined({ always: true })
+    @IsEmail(undefined, { always: true })
     @Column({ unique: true })
     email: string;
 
-    @IsDefined()
+    @IsDefined({ groups: ["create"] })
     @Column({ select: false })
     password: string;
 
@@ -46,5 +46,9 @@ export default class User extends BaseEntity {
 
     async checkPassword(passwordToCheck: string) {
         return await compare(passwordToCheck, this.password);
+    }
+
+    isAdmin() {
+        return this.role === UserRole.Admin;
     }
 }

@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import useMutation from "../../../../../../core/hooks/useMutation";
 import UserForm from "../../../../Shared/Users/Form/UserForm";
 import { AdminRoutes, route } from "../../../../../../core/routing";
+import Alert from "../../../../../Design/Alert/Alert";
 
 const UserEditScreen = () => {
   const { t } = useTranslation();
@@ -25,7 +26,7 @@ const UserEditScreen = () => {
 
   return (
       <div className="w-4/12 mx-auto mt-36">
-        <p>{error}</p>
+        {error && <Alert color="danger">{error}</Alert>}
         <UserForm
           onSubmit={handleSubmit}
           label={t("users.edit")}

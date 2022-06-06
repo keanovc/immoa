@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import useMutation from "../../../../../../core/hooks/useMutation";
 import PropertyForm from "../../../../Shared/Properties/Form/PropertyForm";
 import { AdminRoutes, route } from "../../../../../../core/routing";
+import Alert from "../../../../../Design/Alert/Alert";
 
 const PropertyEditScreen = () => {
   const { t } = useTranslation();
@@ -25,7 +26,7 @@ const PropertyEditScreen = () => {
 
   return (
       <div className="w-4/12 mx-auto mt-36">
-        <p>{error}</p>
+        {error && <Alert color="danger">{error}</Alert>}
         <PropertyForm
           onSubmit={handleSubmit}
           label={t("properties.edit")}

@@ -4,6 +4,7 @@ import useForm from "../../../../../core/hooks/useForm";
 import { useTranslation } from "react-i18next";
 import PasswordInput from "../../../../Design/Form/PasswordInput";
 import Select from "../../../../Design/Form/Select";
+import AgencySelect from "../../Agencies/Select/AgencySelect";
 
 // dynamic schema
 const getSchema = (isUpdate) => {
@@ -12,7 +13,28 @@ const getSchema = (isUpdate) => {
         surname: yup.string().required(),
         email: yup.string().email().required(),
         password: isUpdate ? yup.string() : yup.string().required(),
+        role: yup.string().required(),
+        agencyId: yup.string().required(),
     });
+};
+
+const transformInitialData = (initialData) => {
+    if (initialData.agency) {
+        initialData = {
+            ...initialData,
+            agencyId: initialData.agency.id,
+        };
+    }
+    return initialData;
+};
+
+const defaultData = {
+    name: "",
+    surname: "",
+    email: "",
+    password: "",
+    role: "USER",
+    agencyId: null,
 };
 
 const transformValues = (values) => {
@@ -30,11 +52,8 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
     const { values, errors, handleChange, handleSubmit } = useForm(
         getSchema(isUpdate),
         {
-            name: "",
-            surname: "",
-            email: "",
-            password: "",
-            ...initialData,
+            ...defaultData,
+            ...transformInitialData(initialData),
         }
     );
 
@@ -43,7 +62,7 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit(handleData)} className="px-10 py-8 rounded text-black w-full">
+        <form onSubmit={handleSubmit(handleData)} className="lg:px-10 lg:py-8 rounded text-black w-full">
             <h1 className="mb-16 text-3xl text-center">{label}</h1>
             <div className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -96,6 +115,20 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     />
                 </div>
             </div>
+            {
+                values.role === "REALTOR" && (
+                    <div className="flex flex-wrap -mx-3 mb-6">
+                        <div className="w-full px-3">
+                            <AgencySelect
+                                name="agencyId"
+                                value={values.agencyId}
+                                onChange={handleChange}
+                                error={errors.agencyId}
+                            />
+                        </div>
+                    </div>
+                )
+            }
             <div className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full px-3">
                     <PasswordInput

@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { AdminRoutes } from "../../../../../../core/routing";
 import PropertyForm from "../../../../Shared/Properties/Form/PropertyForm";
+import Alert from "../../../../../Design/Alert/Alert";
 
 const PropertiesAddScreen = () => {
     const { t } = useTranslation();
@@ -23,7 +24,7 @@ const PropertiesAddScreen = () => {
 
     return (
         <div className="w-4/12 mx-auto mt-36">
-            <p>{error}</p>
+            {error && <Alert color="danger">{error}</Alert>}
             <PropertyForm
                 onSubmit={handleSubmit}
                 label={t("properties.create")}

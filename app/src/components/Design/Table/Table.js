@@ -5,7 +5,7 @@ import { AiFillEye } from "react-icons/ai";
 
 const Table = ({ data = [], handleDelete, add, button, detail, group }) => {
     return (
-        <div className="container flex justify-center mx-auto mt-36">
+        <div className="container flex justify-center mx-auto mt-36 mb-10 px-5">
             <div className="w-full flex flex-col">
                 <div className="border-b border-gray-200">
                     <div className="flex justify-end py-2 mb-5">
@@ -53,19 +53,24 @@ const Table = ({ data = [], handleDelete, add, button, detail, group }) => {
                                                     </Link>
                                                 </td>
                                                 {
-                                                    Object.values(item).map((value, index) => {
-                                                        if (value === false) {
+                                                    Object.keys(item).map((key, index) => {
+                                                        if (item[key] === false) {
                                                             return (
                                                                 <td className="px-6 py-5 text-xs text-left text-gray-700" key={index}>0</td>
                                                             )
                                                         }
-                                                        if (value === true) {
+                                                        if (item[key] === true) {
                                                             return (
                                                                 <td className="px-6 py-5 text-xs text-left text-gray-700" key={index}>1</td>
                                                             )
                                                         }
+                                                        if (typeof item[key] === 'object' && item[key] !== null) {
+                                                            return (
+                                                                <td className="px-6 py-5 text-xs text-left text-gray-700" key={index}>{item[key].name}</td>
+                                                            )
+                                                        }
                                                         return (
-                                                            <td className="px-6 py-5 text-xs text-left text-gray-700" key={index}>{value}</td>
+                                                            <td className="px-6 py-5 text-xs text-left text-gray-700" key={index}>{item[key]}</td>
                                                         )
                                                     })
                                                 }

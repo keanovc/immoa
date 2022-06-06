@@ -12,12 +12,25 @@ export default class PropertyService {
     }
 
     all = async () => {
-        const properties = await this.repository.find();
+        const properties = await this.repository.find({
+            relations: ["agency"]
+        });
+        return properties;
+    }
+
+    allByAgency = async (agencyId: number) => {
+        const properties = await this.repository.find({
+            relations: ["agency"],
+            where: { agency: { id: agencyId } }
+        });
         return properties;
     }
 
     findOne = async (id: number) => {
-        const property = await this.repository.findOneBy({ id });
+        const property = await this.repository.findOne({
+            where: { id },
+            relations: ["agency"]
+        });
         return property;
     }
 
@@ -26,12 +39,14 @@ export default class PropertyService {
         return property;
     }
 
-    create = async (body) => {
+    create = async (body: PropertyBody) => {
         const property = await this.findOneBy({ address: body.address });
         if (property) {
             return console.error("Property already exists");
         }
-        const newProperty = await this.repository.save(body);
+        const newProperty = await this.repository.save(
+            this.repository.create(body)
+        );
         return newProperty;
     }
 

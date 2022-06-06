@@ -15,7 +15,7 @@ const Textarea = ({
     return (
         <>
             <textarea
-                className={`form-control ${error ? "is-invalid block border border-gray-300 w-full p-3 rounded mb-4" : "block border border-gray-300 w-full p-3 rounded mb-4"}`}
+                className={`form-control ${error ? "is-invalid block border border-gray-300 w-full p-3 rounded mb-1" : "block border border-gray-300 w-full p-3 rounded mb-4"}`}
                 type={type}
                 name={name}
                 rows="5"
@@ -25,7 +25,7 @@ const Textarea = ({
                 {...rest}
             />
             {children}
-            {error && <div className="invalid-feedback">{error}</div>}
+            {error && <div className="invalid-feedback text-red-500 text-xs ml-1">{error}</div>}
         </>
     );
 };

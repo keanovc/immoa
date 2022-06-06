@@ -5,7 +5,7 @@ const Input = ({ type, name, placeholder, value, onChange, error, disabled, ...r
     <>
       <input 
         type={type}
-        className={`form-control ${error ? "is-invalid block border border-gray-300 w-full p-3 rounded mb-4" : "block border border-gray-300 w-full p-3 rounded mb-4"}`}
+        className={`form-control ${error ? "is-invalid block border border-gray-300 w-full p-3 rounded mb-1" : "block border border-gray-300 w-full p-3 rounded mb-4"}`}
         name={name}
         id={name}
         placeholder={placeholder}
@@ -14,7 +14,7 @@ const Input = ({ type, name, placeholder, value, onChange, error, disabled, ...r
         disabled={disabled}
         {...rest}
         />
-      {error && <div className="invalid-feedback">{error}</div>}
+      {error && <div className="invalid-feedback text-red-500 text-xs ml-1 mb-3">{error}</div>}
     </>
   )
 }

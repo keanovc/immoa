@@ -11,28 +11,61 @@ const AgencyDetailScreen = () => {
 
     return (
         <>
-            <Link to={route(AdminRoutes.EditAgency, { id: agency.id })}>
-                {t("buttons.edit")}
-            </Link>
-            <div
-            class="container max-w-lg px-4 py-32 mx-auto text-left md:max-w-none md:text-center"
-            >
-                <h1
-                    class="text-5xl font-extrabold leading-10 tracking-tight text-left text-gray-900 md:text-center sm:leading-none md:text-6xl lg:text-7xl"
-                >
-                    <span class="inline md:block">{agency.name}</span>
-                </h1>
-                <div
-                    class="mx-auto mt-5 text-gray-500 md:mt-12 md:max-w-lg md:text-center lg:text-lg"
-                >
-                    {agency.description}
-                </div>
-                <div class="flex flex-col items-center mt-12 text-center">
-                    <Link to={route(AdminRoutes.EditAgency, { id: agency.id })}>
-                        <div class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
-                            {t("buttons.edit")}
-                        </div>
-                    </Link>
+            <div className="flex items-center justify-center h-screen bg-gray-200 mt-20 md:mt-0 md:mb-0">
+                <div className="bg-white font-semibold text-center rounded-3xl border shadow-lg p-10 w-10/12 md:8/12 lg:w-4/12">
+                    <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto" src="https://ribboncommunications.com/sites/default/files/styles/large/public/person-placeholder_0.png?itok=LIcM1gRj" alt="person"/>
+                    <h1 className="text-lg text-gray-700"> {agency.name} </h1>
+                    <h3 className="text-sm text-gray-400 "> {agency.city} </h3>
+                    <hr className="border-gray-300 my-8"/>
+                    <div className="p-5">
+                        <p className="text-md text-gray-700 mt-4 text-left"><span className="text-gray-400 font-bold">Zipcode:</span> {agency.zipCode} </p>
+                        <p className="text-md text-gray-700 mt-4 text-left"><span className="text-gray-400 font-bold">Address:</span> {agency.address} </p>
+                        <p className="text-md text-gray-700 mt-4 text-left"><span className="text-gray-400 font-bold">Phone:</span> {agency.phone} </p>
+                        <p className="text-md text-gray-700 mt-4 text-left"><span className="text-gray-400 font-bold">Description:</span> {agency.description} </p>
+                        <p className="text-md text-gray-400 mt-4 mb-4 text-left">Properties:</p>
+                            {
+                                agency.properties.length === 0 ? (
+                                    <p className="text-gray-700 text-left ml-5">No properties</p>
+                                ) : (
+                                    agency.properties.map((property, index) => (
+                                        <>
+                                            <Link to={route(AdminRoutes.DetailProperty, { id: property.id })} key={index}>
+                                                <p className="text-left text-blue-700 ml-5">- {property.address} ({property.type})</p>
+                                            </Link>
+                                            <br />
+                                        </>
+                                    ))
+                                )
+                            }
+                        <p className="text-md text-gray-400 mt-4 mb-4 text-left">Realtors:</p>
+                            {
+                                agency.users.length === 0 ? (
+                                    <p className="text-gray-700 text-left ml-5">No Realtors</p>
+                                ) : (
+                                    agency.users.map((user, index) => (
+                                        <>
+                                            <Link to={route(AdminRoutes.DetailUser, { id: user.id })} key={index}>
+                                                <p className="text-left text-blue-700 ml-5">- {user.name} {user.surname}</p>
+                                            </Link>
+                                            <br />
+                                        </>
+                                    ))
+                                )
+                            }
+                    </div>
+                    <hr className="border-gray-300 my-8"/>
+                    <div className="flex items-center justify-around">
+                        <Link to={route(AdminRoutes.Agencies)}>
+                            <div className="bg-gray-600 px-8 py-2 rounded-3xl text-gray-100 font-semibold uppercase tracking-wide transition duration-300 hover:scale-105 ease-in-out hover:bg-gray-800">
+                                {t("buttons.back")}
+                            </div>
+                        </Link>
+                        <Link to={route(AdminRoutes.EditAgency, { id: agency.id })}>
+                            <div className="bg-indigo-600 px-8 py-2 rounded-3xl text-gray-100 font-semibold uppercase tracking-wide transition duration-300 hover:scale-105 ease-in-out hover:bg-indigo-800">
+                                {t("buttons.edit")}
+                            </div>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </>

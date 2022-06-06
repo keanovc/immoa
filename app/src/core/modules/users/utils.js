@@ -12,4 +12,8 @@ const isAdmin = (user) => {
     return user.role === UserRoles.Admin;
 };
 
-export { isAdmin, formatName, formatPrice };
+const isRealtor = (user) => {
+    return user.role === UserRoles.Realtor;
+};
+
+export { isAdmin, formatName, formatPrice, isRealtor };

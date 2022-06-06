@@ -15,7 +15,15 @@ const HomeRoutes = {
 const ProfileRoutes = {
     Index: "/profile",
     Favorites: "/profile/favorites",
-    Edit: "/profile/edit",
+    Profile: "/profile/:id",
+};
+
+const AgencyRoutes = {
+    Index: "/agency",
+    Properties: "/agency/properties",
+    AddProperty: "/agency/properties/add",
+    DetailProperty: "/agency/properties/:id",
+    EditProperty: "/agency/properties/:id/edit",
 };
 
 const AdminRoutes = {
@@ -43,4 +51,4 @@ export const route = (path, options = {}) => {
     return path;
 };
 
-export { AuthRoutes, HomeRoutes, ProfileRoutes, AdminRoutes };
+export { AuthRoutes, HomeRoutes, ProfileRoutes, AgencyRoutes, AdminRoutes };

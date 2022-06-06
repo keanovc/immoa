@@ -1,12 +1,12 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { AuthRoutes, HomeRoutes, ProfileRoutes, AdminRoutes } from '../../core/routing';
+import { AuthRoutes, HomeRoutes, ProfileRoutes, AgencyRoutes, AdminRoutes } from '../../core/routing';
 import AuthProvider from './Auth/AuthProvider';
 import { UserRoles } from '../../core/modules/users/constants';
 
 import Home from './container/Home/Home';
-import Signup from './container/Signup/Signup';
-import Signin from './container/Signin/Signin';
+import Signup from './Auth/Signup/Signup';
+import Signin from './Auth/Signin/Signin';
 import Buy from './container/Buy/Buy';
 import Rent from './container/Rent/Rent';
 import Detail from './container/Detail/Detail';
@@ -16,10 +16,14 @@ import OnboardingLayout from './Auth/OnboardingLayout';
 import ProfileLayout from './Auth/ProfileLayout';
 import PublicLayout from './Auth/PublicLayout';
 import AdminLayout from './Auth/AdminLayout';
+import AgencyLayout from './Auth/AgencyLayout';
 
 import Profile from './container/Profile/Profile';
 import Favorites from './container/Favorites/Favorites';
 import RoleContainer from './Auth/RoleContainer';
+
+import AgencyPropertiesLayout from './container/Agency/Properties/AgencyPropertiesLayout';
+import AgencyPropertiesOverviewScreen from './container/Agency/Properties/Overview/AgencyPropertiesOverviewScreen';
 
 import UsersLayout from './container/Admin/Users/UsersLayout';
 import UsersOverviewScreen from './container/Admin/Users/Overview/UsersOverviewScreen';
@@ -57,12 +61,30 @@ function App() {
             
             <Route path={ProfileRoutes.Index} element={<ProfileLayout />}>
               <Route path={ProfileRoutes.Favorites} element={<Favorites />} />
-              <Route path={ProfileRoutes.Edit} element={<Profile />} />
+              <Route path={ProfileRoutes.Profile} element={<Profile />} />
             </Route>
 
             <Route path={AuthRoutes.Index} element={<OnboardingLayout />}>
               <Route path={AuthRoutes.Signup} element={<Signup />} />
               <Route path={AuthRoutes.Signin} element={<Signin />} />
+            </Route>
+          </Route>
+          
+          <Route
+            path={AgencyRoutes.Index}
+            element={
+                <RoleContainer roles={[UserRoles.Realtor]}>
+                    <AgencyLayout />
+                </RoleContainer>
+            }>
+            <Route
+                path={AgencyRoutes.Index}
+                element={<Navigate to={AgencyRoutes.Properties} />}
+            />
+            <Route
+              path={AgencyRoutes.Properties}
+              element={<AgencyPropertiesLayout />}>
+              <Route index element={<AgencyPropertiesOverviewScreen />} />
             </Route>
           </Route>
 

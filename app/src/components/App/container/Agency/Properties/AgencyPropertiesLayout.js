@@ -2,9 +2,9 @@ import { useTranslation } from "react-i18next";
 import { Outlet } from "react-router-dom";
 import useTitle from "../../../../../core/hooks/useTitle";
 
-const AgenciesLayout = () => {
+const AgencyPropertiesLayout = () => {
     const { t } = useTranslation();
-    useTitle(t("agencies.title"));
+    useTitle(t("nav.admin.properties"));
 
     return (
         <div>
@@ -13,4 +13,4 @@ const AgenciesLayout = () => {
     );
 };
 
-export default AgenciesLayout;
+export default AgencyPropertiesLayout;

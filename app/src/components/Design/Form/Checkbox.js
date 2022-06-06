@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 
-const Select = ({ name, options = [], onChange, value, error, disabled }) => {
+const Checkbox = ({ name, options = [], onChange, value, error, disabled }) => {
     return (
         <>
-            <select
+            <input
+                type="checkbox"
                 className={`form-control ${error ? "is-invalid block border border-gray-300 w-full p-3 rounded mb-4" : "block border border-gray-300 w-full p-3 rounded mb-4"}`}
                 name={name}
                 disabled={disabled}
@@ -16,13 +17,13 @@ const Select = ({ name, options = [], onChange, value, error, disabled }) => {
                             {option.label}
                         </option>
                     ))}
-            </select>
-            {error && <div className="invalid-feedback text-red-500 text-xs ml-1">{error}</div>}
+            </input>
+            {error && <div className="invalid-feedback">{error}</div>}
         </>
     );
 };
 
-Select.propTypes = {
+Checkbox.propTypes = {
     label: PropTypes.string,
     name: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -36,4 +37,4 @@ Select.propTypes = {
     onChange: PropTypes.func.isRequired,
 };
 
-export default Select;
+export default Checkbox;

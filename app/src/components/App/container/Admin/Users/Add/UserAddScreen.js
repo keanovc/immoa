@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { AdminRoutes } from "../../../../../../core/routing";
 import UserForm from "../../../../Shared/Users/Form/UserForm";
+import Alert from "../../../../../Design/Alert/Alert";
 
 const UserAddScreen = () => {
     const { t } = useTranslation();
@@ -23,7 +24,7 @@ const UserAddScreen = () => {
 
     return (
         <div className="w-4/12 mx-auto mt-36">
-            <p>{error}</p>
+            {error && <Alert color="danger">{error}</Alert>}
             <UserForm
               onSubmit={handleSubmit}
               label={t("users.create")}

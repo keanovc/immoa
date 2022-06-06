@@ -6,7 +6,7 @@ const UserSelect = (props) => {
     const { data: users } = useFetch("/users");
 
     const options = users
-        ? users.map((u) => ({ value: u.id, label: formatName(u) }))
+        ? users.map((u) => ({ value: u.id, label: formatName(u) + " (" + u.role + ")" }))
         : null;
 
     return <Select options={options} {...props} />;

@@ -22,7 +22,7 @@ const Home = () => {
                         <div className="flex w-4/12 m-auto">
                             <img src={images.logowhite} alt="logo" />
                         </div>
-                        <div className="backdrop-blur-xl bg-white/30 border-transparent rounded-lg p-12 w-8/12 mt-24 mx-auto">
+                        {/* <div className="backdrop-blur-xl bg-white/30 border-transparent rounded-lg p-12 w-8/12 mt-24 mx-auto">
                             <div className="lg:flex">
                                 <div className="relative z-0 w-full mr-6 mb-4 lg:mb-0">
                                     <select defaultValue={'Buy'} className="form-select
@@ -74,7 +74,7 @@ const Home = () => {
                                 </div>
                                 <button type="button" className="text-white hover:text-white border border-white hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Search</button>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="absolute mt-36 top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/4">
                             <div className="bounce">
                                 <a href="#buy"><IoIosArrowDown className='text-white text-6xl'/></a>

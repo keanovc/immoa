@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import useMutation from "../../../../../../core/hooks/useMutation";
 import AgencyForm from "../../../../Shared/Agencies/Form/AgencyForm";
 import { AdminRoutes, route } from "../../../../../../core/routing";
+import Alert from "../../../../../Design/Alert/Alert";
 
 const AgencyEditScreen = () => {
   const { t } = useTranslation();
@@ -25,7 +26,7 @@ const AgencyEditScreen = () => {
 
   return (
       <div className="w-4/12 mx-auto mt-36">
-        <p>{error}</p>
+        {error && <Alert color="danger">{error}</Alert>}
         <AgencyForm
           onSubmit={handleSubmit}
           label={t("agencies.edit")}

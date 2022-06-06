@@ -13,6 +13,9 @@
         "contact": "Contact",
         "favorites": "Favorites",
         "profile": "Profile",
+        "agency": {
+            "properties": "Properties"
+        },
         "admin": {
             "dashboard": "Dashboard",
             "users": "Users",
@@ -72,7 +75,9 @@
             "text": "RENT A HOME WITH US"
         },
         "edit": "Edit Property",
-        "create": "Create Property"
+        "create": "Create Property",
+        "sold": "Sold",
+        "available": "Available"
     },
     "agencies": {
         "title": "Agencies",
@@ -98,12 +103,14 @@
         "create": "Create",
         "adduser": "Add User",
         "addproperty": "Add Property",
-        "addagency": "Add Agency"
+        "addagency": "Add Agency",
+        "back": "Back"
     },
     "fields": {
         "email": "Email",
         "firstname": "First Name",
         "lastname": "Last Name",
+        "surname": "Surname",
         "message": "Message",
         "password": "Password",
         "phone": "Phone",
@@ -121,8 +128,17 @@
         "year": "Year",
         "description": "Description",
         "image": "Image",
-        "type": "Type",
         "buy": "Buy",
-        "rent": "Rent"
+        "rent": "Rent",
+        "type": {
+            "house": "House",
+            "mansion": "Mansion",
+            "apartment": "Apartment",
+            "flat": "Flat",
+            "penthouse": "Penthouse",
+            "office": "Office",
+            "shop": "Shop",
+            "other": "Other"
+        }
     }
 }

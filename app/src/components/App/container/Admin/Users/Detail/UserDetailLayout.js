@@ -1,5 +1,7 @@
 import { Outlet, useParams } from "react-router-dom";
 import useFetch from "../../../../../../core/hooks/useFetch";
+import LoadingIndicator from "../../../../../Design/LoadingIndicator/LoadingIndicator";
+import Alert from "../../../../../Design/Alert/Alert";
 
 const UserDetailLayout = () => {
     const { id } = useParams();
@@ -17,11 +19,13 @@ const UserDetailLayout = () => {
     };
 
     if (error) {
-        return <div>{error}</div>;
+        return <div className="mt-36 w-4/12 mx-auto">
+            <Alert color="danger">{error}</Alert>
+        </div>
     }
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <LoadingIndicator />;
     }
 
     return <Outlet context={{ user, onUserUpdate: handleUpdate }} />;

@@ -4,72 +4,98 @@ import Input from "../../../../Design/Form/Input";
 import * as yup from "yup";
 import Select from "../../../../Design/Form/Select";
 import Textarea from "../../../../Design/Form/Textarea";
+import FileInput from "../../../../Design/Form/FileInput";
+import AgencySelect from "../../Agencies/Select/AgencySelect";
 
 const schema = yup.object().shape({
     zipCode: yup.string().required("Zip code is required"),
     address: yup.string().required("Address is required"),
     city: yup.string().required("City is required"),
-    price: yup.number().required("Price is required"),
-    rooms: yup.number().required("Rooms is required"),
-    bathrooms: yup.number().required("Bathrooms is required"),
-    area: yup.number().required("Area is required"),
-    year: yup.number().required("Year is required"),
+    price: yup.number().typeError("Price is required").required(),
+    rooms: yup.number().typeError("Rooms is required").required(),
+    bathrooms: yup.number().typeError("Bathrooms is required").required(),
+    area: yup.number().typeError("Area is required").required(),
+    year: yup.number().typeError("Year is required").required(),
     description: yup.string().required("Description is required"),
     image: yup.string().required("Image is required"),
     type: yup.string().required("Type is required"),
-    bor: yup.string().required("Bor is required"),
+    bor: yup.string().required("Required"),
+    agencyId: yup.number().nullable().required("Agency is required"),
 });
+
+const transformInitialData = (initialData) => {
+    if (initialData.agency) {
+        initialData = {
+            ...initialData,
+            agencyId: initialData.agency.id,
+        };
+    }
+    return initialData;
+};
+
+const defaultData = {
+    zipCode: "",
+    address: "",
+    city: "",
+    price: "",
+    rooms: "",
+    bathrooms: "",
+    area: "",
+    year: "",
+    description: "",
+    type: "",
+    bor: "",
+    sold: 0,
+    agencyId: null,
+};
 
 const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
     const { t } = useTranslation();
     const { values, handleChange, handleSubmit, errors } = useForm(schema, {
-        zipCode: "",
-        address: "",
-        city: "",
-        price: "",
-        rooms: "",
-        bathrooms: "",
-        area: "",
-        year: "",
-        description: "",
-        image: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-        type: "",
-        bor: "",
-        sold: false,
-        ...initialData,
+        ...defaultData,
+        ...transformInitialData(initialData),
     });
 
     const handleData = (values) => {
+        console.log(values);
         onSubmit(values);
     };
 
     return (
-        <form onSubmit={handleSubmit(handleData)} className="px-10 py-8 rounded text-black w-full">
+        <form onSubmit={handleSubmit(handleData)} className="py-8 rounded text-black w-full">
             <h1 className="mb-16 text-3xl text-center">{label}</h1>
-            {/* <div className="flex flex-wrap -mx-3 mb-9 px-3">
-                <div className="flex items-center justify-center w-full">
-                    <label htmlFor="image" className="flex flex-col items-center justify-center w-full h-36 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-white dark:hover:bg-bray-800 hover:bg-gray-100">
-                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                            <svg className="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF</p>
-                        </div>
-                        <FileInput
-                            label={t('properties.image')}
-                            name="image"
-                            accept="image/*"
-                            onChange={handleChange}
-                            value={values.image}
-                            error={errors.image}
-                            disabled={disabled}
-                            className="hidden"
-                        />
-                    </label>
-                </div> 
-            </div> */}
+            <FileInput
+                name="image"
+                onChange={handleChange}
+                value={values.image}
+                error={errors.image}
+                disabled={disabled}
+            />
+            <div className="flex flex-wrap -mx-3 mb-3 px-3">
+                <Select
+                    name="sold"
+                    label={t('properties.sold')}
+                    value={values.sold}
+                    onChange={handleChange}
+                    error={errors.sold}
+                    disabled={disabled}
+                    options={[
+                        { value: 0, label: t('properties.available') },
+                        { value: 1, label: t('properties.sold') },
+                    ]}
+                />
+            </div>
+            <div className="flex flex-wrap -mx-3 mb-3 px-3">
+                <AgencySelect
+                    name="agencyId"
+                    value={values.agencyId}
+                    onChange={handleChange}
+                    error={errors.agencyId}
+                />
+            </div>
             <div className="flex flex-wrap -mx-3 mb-3">
                 <div className="w-full px-3 md:w-1/2">
-                    <Input 
+                    <Input
                         type={'text'}
                         name="city"
                         value={values.city}
@@ -117,7 +143,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
             </div>
             <div className="flex flex-wrap -mx-3 mb-3">
                 <div className="w-full px-3 md:w-1/2">
-                    <Input 
+                    <Input
                         type={'number'}
                         name="rooms"
                         value={values.rooms}
@@ -165,14 +191,23 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
             </div>
             <div className="flex flex-wrap -mx-3 mb-3">
                 <div className="w-full px-3 md:w-1/2">
-                    <Input 
-                        type={'text'}
+                    <Select
                         name="type"
+                        label={t('fields.type')}
                         value={values.type}
                         onChange={handleChange}
-                        placeholder={t('fields.type')}
                         error={errors.type}
                         disabled={disabled}
+                        options={[
+                            { value: 'house', label: t('fields.type.house') },
+                            { value: 'mansion', label: t('fields.type.mansion') },
+                            { value: 'apartment', label: t('fields.type.apartment') },
+                            { value: 'flat', label: t('fields.type.flat') },
+                            { value: 'penthouse', label: t('fields.type.penthouse') },
+                            { value: 'office', label: t('fields.type.office') },
+                            { value: 'shop', label: t('fields.type.shop') },
+                            { value: 'other', label: t('fields.type.other') },
+                        ]}
                     />
                 </div>
                 <div className="w-full px-3 md:w-1/2">

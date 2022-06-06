@@ -1,40 +1,41 @@
-import { useState } from 'react';
 import useMutation from '../../../../core/hooks/useMutation';
-import { useAuthContext } from '../../Auth/AuthProvider';
+import { useAuthContext } from '../AuthProvider';
 import { AuthRoutes } from '../../../../core/routing';
 
+import useForm from '../../../../core/hooks/useForm';
 import { Link } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import useTitle from "../../../../core/hooks/useTitle";
 import PasswordInput from '../../../Design/Form/PasswordInput';
 import Input from '../../../Design/Form/Input';
 import * as MaterialDesign from "react-icons/md";
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+    email: yup.string().email().required(),
+    password: yup.string().required(),
+});
+
+const defaultData = {
+    email: "",
+    password: "",
+};
 
 const Signin = () => {
-    const { login } = useAuthContext();
     const { t } = useTranslation();
+    const { login } = useAuthContext();
     useTitle(t("signin.title"));
-
-    const [data, setData] = useState({
-        email: "",
-        password: "",
-    });
-
-    const handleChange = (e) => {
-        setData({
-            ...data,
-            [e.target.name]: e.target.value,
-        });
-    };
 
     const { isLoading, error, mutate } = useMutation();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const { values, errors, handleChange, handleSubmit } = useForm(schema, {
+        ...defaultData,
+    });
 
+    const handleData = (values) => {
         mutate(`${process.env.REACT_APP_API_URL}/login`, {
             method: "POST",
-            data,
+            data: values,
             onSuccess: (data) => {
                 login(data);
             },
@@ -44,13 +45,24 @@ const Signin = () => {
     return (
         <header className="sign bg-center bg-no-repeat bg-cover h-screen relative flex flex-col">
             <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-                <form onSubmit={handleSubmit} className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                <form onSubmit={handleSubmit(handleData)} className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
                     <p className='text-red-500'>{error}</p>
                     <Link to="/" className='text-2xl'><MaterialDesign.MdClose className='text-2xl'/></Link>
                     <h1 className="mb-8 text-3xl text-center">{t('signin.title')}</h1>
-                    <Input type={'email'} name={'email'} placeholder={t('fields.email')} value={data.email} onChange={handleChange} />
+                    <Input 
+                        type={'email'}
+                        name={'email'}
+                        placeholder={t('fields.email')}
+                        value={values.email}
+                        onChange={handleChange}
+                        error={errors.email}
+                    />
                         
-                    <PasswordInput value={data.password} onChange={handleChange}/>
+                    <PasswordInput
+                        value={values.password} 
+                        onChange={handleChange}
+                        error={errors.password}
+                    />
 
                     <button
                         type="submit"
