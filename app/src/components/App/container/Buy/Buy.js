@@ -1,4 +1,3 @@
-import images from "../../constants/images";
 import { Card } from "../../../Design/Card/Card";
 import { useTranslation } from "react-i18next";
 import useTitle from "../../../../core/hooks/useTitle";

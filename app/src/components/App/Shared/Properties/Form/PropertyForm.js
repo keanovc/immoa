@@ -4,8 +4,8 @@ import Input from "../../../../Design/Form/Input";
 import * as yup from "yup";
 import Select from "../../../../Design/Form/Select";
 import Textarea from "../../../../Design/Form/Textarea";
-import FileInput from "../../../../Design/Form/FileInput";
 import AgencySelect from "../../Agencies/Select/AgencySelect";
+import FileInput from "../../../../Design/Form/FileInput";
 
 const schema = yup.object().shape({
     zipCode: yup.string().required("Zip code is required"),
