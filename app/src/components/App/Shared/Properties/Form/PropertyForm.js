@@ -4,7 +4,7 @@ import Input from "../../../../Design/Form/Input";
 import * as yup from "yup";
 import Select from "../../../../Design/Form/Select";
 import Textarea from "../../../../Design/Form/Textarea";
-import FileInput from "../../../../Design/Form/FileInput";
+// import FileInput from "../../../../Design/Form/FileInput";
 import AgencySelect from "../../Agencies/Select/AgencySelect";
 
 const schema = yup.object().shape({
@@ -17,7 +17,7 @@ const schema = yup.object().shape({
     area: yup.number().typeError("Area is required").required(),
     year: yup.number().typeError("Year is required").required(),
     description: yup.string().required("Description is required"),
-    image: yup.string().required("Image is required"),
+    // image: yup.string().required("Image is required"),
     type: yup.string().required("Type is required"),
     bor: yup.string().required("Required"),
     agencyId: yup.number().nullable().required("Agency is required"),
@@ -64,13 +64,13 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
     return (
         <form onSubmit={handleSubmit(handleData)} className="py-8 rounded text-black w-full">
             <h1 className="mb-16 text-3xl text-center">{label}</h1>
-            <FileInput
+            {/* <FileInput
                 name="image"
                 onChange={handleChange}
                 value={values.image}
                 error={errors.image}
                 disabled={disabled}
-            />
+            /> */}
             <div className="flex flex-wrap -mx-3 mb-3 px-3">
                 <Select
                     name="sold"
