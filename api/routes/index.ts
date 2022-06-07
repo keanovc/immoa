@@ -35,13 +35,8 @@ const registerAdminRoutes = (router: Router) => {
     const userController = new UserController();
     adminRouter.get("/users", handleErrors(userController.all));
     adminRouter.get("/users/:id", handleErrors(userController.find));
-    adminRouter.post("/users", handleErrors(userController.create));
-    adminRouter.patch("/users/:id", handleErrors(userController.update));
-    adminRouter.delete("/users/:id", handleErrors(userController.delete));
 
     const propertyController = new PropertyController();
-    adminRouter.get("/properties", handleErrors(propertyController.all));
-    adminRouter.get("/properties/:id", handleErrors(propertyController.find));
     adminRouter.post("/properties", handleErrors(propertyController.create));
     adminRouter.patch("/properties/:id", handleErrors(propertyController.update));
     adminRouter.delete("/properties/:id", handleErrors(propertyController.delete));
@@ -56,38 +51,28 @@ const registerAdminRoutes = (router: Router) => {
     router.use(withRole(UserRole.Admin), adminRouter);
 };
 
-const registerRealtorRoutes = (router: Router) => {
-    const realtorRouter = Router();
+// const registerRealtorRoutes = (router: Router) => {
+//     const realtorRouter = Router();
 
-    const propertyController = new PropertyController();
-    realtorRouter.get("/properties", handleErrors(propertyController.all));
-    realtorRouter.get("/properties/:id", handleErrors(propertyController.find));
-    realtorRouter.post("/properties", handleErrors(propertyController.create));
-    realtorRouter.patch("/properties/:id", handleErrors(propertyController.update));
-    realtorRouter.delete("/properties/:id", handleErrors(propertyController.delete));
+//     const propertyController = new PropertyController();
+//     realtorRouter.get("/properties", handleErrors(propertyController.all));
+//     realtorRouter.get("/properties/:id", handleErrors(propertyController.find));
+//     realtorRouter.post("/properties", handleErrors(propertyController.create));
+//     realtorRouter.patch("/properties/:id", handleErrors(propertyController.update));
+//     realtorRouter.delete("/properties/:id", handleErrors(propertyController.delete));
 
-    router.use(withRole(UserRole.Realtor), realtorRouter);
-};
-
-const registerUserRoutes = (router: Router) => {
-    const userRouter = Router();
-
-    const userController = new UserController();
-    userRouter.get("/users/:id", handleErrors(userController.find));
-    userRouter.patch("/users/:id", handleErrors(userController.update));
-    userRouter.delete("/users/:id", handleErrors(userController.delete));
-
-    router.use(withRole(UserRole.User), userRouter);
-};
+//     router.use(withRole(UserRole.Realtor), realtorRouter);
+// };
 
 const registerAuthenticatedRoutes = (router: Router) => {
     const authRouter = Router();
 
+    const userController = new UserController();
+    authRouter.get("/users/:id", handleErrors(userController.find));
+    authRouter.patch("/users/:id", handleErrors(userController.update));
+    authRouter.delete("/users/:id", handleErrors(userController.delete));
+
     registerAdminRoutes(authRouter);
-    
-    registerRealtorRoutes(authRouter);
-    
-    registerUserRoutes(authRouter);
 
     // authenticated routes use authJWT
     router.use(authJwt, authRouter);

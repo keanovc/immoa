@@ -37,6 +37,13 @@ export default class PropertyController {
     //     return res.json(properties);
     // }
 
+    // all = async (req: AuthRequest, res: Response, next: NextFunction) => {
+    //     const properties = req.user
+    //         ? await this.propertyService.all()
+    //         : await this.propertyService.allWithout();
+    //     return res.json(properties);
+    // };
+
     all = async (req: Request, res: Response, next: NextFunction) => {
         const properties = await this.propertyService.all();
         return res.json(properties);

@@ -11,6 +11,8 @@ const Buy = () => {
     const { auth } = useAuthContext();
     const { data } = useFetch(`/properties`);
 
+    console.log(data);
+
     return (
         <>
             <header id="up" className="buy bg-center bg-no-repeat bg-cover h-[40vh] relative">

@@ -18,6 +18,27 @@ export default class PropertyService {
         return properties;
     }
 
+    // allWithout = async () => {
+    //     const properties = await this.repository.find({
+    //         select: {
+    //             id: true,
+    //             zipCode: true,
+    //             city: true,
+    //             rooms: true,
+    //             bathrooms: true,
+    //             area: true,
+    //             price: true,
+    //             image: true,
+    //             type: true,
+    //             year: true,
+    //             sold: true,
+    //             bor: true,
+    //             description: true,
+    //         }
+    //     });
+    //     return properties;
+    // }
+
     allByAgency = async (agencyId: number) => {
         const properties = await this.repository.find({
             relations: ["agency"],
