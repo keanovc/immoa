@@ -34,7 +34,8 @@
         "title": "Favorites"
     },
     "profile": {
-        "title": "Profile"
+        "title": "Profile",
+        "edit": "Edit Profile"
     },
     "contact": {
         "title": "Contact"

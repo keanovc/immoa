@@ -19,7 +19,7 @@ import AdminLayout from './Auth/AdminLayout';
 import AgencyLayout from './Auth/AgencyLayout';
 
 import Profile from './container/Profile/Profile';
-import Favorites from './container/Favorites/Favorites';
+import ProfileEdit from './container/Profile/ProfileEdit';
 import RoleContainer from './Auth/RoleContainer';
 
 import AgencyPropertiesLayout from './container/Agency/Properties/AgencyPropertiesLayout';
@@ -60,8 +60,8 @@ function App() {
 
             
             <Route path={ProfileRoutes.Index} element={<ProfileLayout />}>
-              <Route path={ProfileRoutes.Favorites} element={<Favorites />} />
               <Route path={ProfileRoutes.Profile} element={<Profile />} />
+              <Route path={ProfileRoutes.EditProfile} element={<ProfileEdit />} />
             </Route>
 
             <Route path={AuthRoutes.Index} element={<OnboardingLayout />}>
