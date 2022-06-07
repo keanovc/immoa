@@ -12,7 +12,7 @@ const Card = ({ property, auth }) => {
                     <div className="bg-white shadow-xl rounded-xl overflow-hidden transform transition duration-300 hover:scale-105">
                         <div className="bg-cover bg-center h-56 p-4" style={{ backgroundImage: `url(${getImagePath(property.image)})` }}>
                             {
-                                property.sold === true ? (
+                                property.sold === "yes" ? (
                                     <p className='absolute inline-flex mt-3 ml-3 px-3 py-2 rounded-lg z-10 bg-red-500 text-sm font-medium text-white select-none'>Sold</p>
                                 ) : (
                                     <p className='absolute inline-flex mt-3 ml-3 px-3 py-2 rounded-lg z-10 bg-green-500 text-sm font-medium text-white select-none'>Available</p>
@@ -71,7 +71,7 @@ const Card = ({ property, auth }) => {
 
 Card.propTypes = {
     property: PropTypes.object.isRequired,
-    auth: PropTypes.bool.isRequired
+    auth: PropTypes.object.isRequired
 }
 
 export default Card;

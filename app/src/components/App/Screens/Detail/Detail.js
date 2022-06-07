@@ -42,7 +42,7 @@ const Detail = () => {
             <section className="text-gray-700 body-font overflow-hidden">
               <div className="container px-5 pt-6 mx-auto">
                 <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                  <div className="lg:w-1/2 w-full lg:pl-0 lg:py-6 mt-6 lg:mt-0">
+                  <div className="lg:w-1/2 w-full lg:pl-0 lg:py-6 mt-6 lg:mt-0 lg:mb-0 mb-10">
                     <h1 className="text-gray-900 text-3xl title-font font-medium mb-1 uppercase">{data.type}</h1>
                     <p className="leading-relaxed">{data.description}</p>
                     <hr className="my-10 border-gray-500"/>

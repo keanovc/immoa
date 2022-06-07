@@ -1,8 +1,9 @@
 import useMutation from "../../../../core/hooks/useMutation"
-import { useEffect } from "react"
+// import { useEffect } from "react";
+import PropTypes from "prop-types";
 
 const DeleteButton = ({ onSuccess, id, scope }) => {
-    const { isLoading, error, mutate } = useMutation();
+    const { mutate } = useMutation();
 
     const handleClick = () => {
         mutate(`${process.env.REACT_APP_API_URL}/${scope}/${id}`, {
@@ -12,6 +13,12 @@ const DeleteButton = ({ onSuccess, id, scope }) => {
             },
         });
     };
+
+    // useEffect(() => {
+    //     if (error) {
+    //         window.alert(error);
+    //     }
+    // }, [error]);
 
     return (
         <button onClick={handleClick}>
@@ -23,5 +30,9 @@ const DeleteButton = ({ onSuccess, id, scope }) => {
         </button>
     )
 }
+
+DeleteButton.propTypes = {
+    onClick: PropTypes.func,
+};
 
 export default DeleteButton

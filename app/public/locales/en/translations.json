@@ -5,6 +5,8 @@
         "lorem": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut quia asperiores alias vero magnam recusandae adipisci ad vitae laudantium quod rem voluptatem eos accusantium cumque.",
         "buy": "Buy A Property",
         "rent": "Rent A Property",
+        "buytext": "Are you interested in buying a nice house or still prefer a store to start a nice business in. Click on the button below and discover the various beautiful properties on offer.",
+        "renttext": "Are you looking for a nice apartment to rent or rather an office to handle all your documents. Then click on the button below and discover our wide range of rental properties.",
         "or": "OR"
     },
     "nav": {

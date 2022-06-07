@@ -15,7 +15,7 @@ const Rent = () => {
 
     return (
         <>
-            <header id="up" className="rent bg-center bg-no-repeat bg-cover h-[40vh] relative">
+            <header id="up" className="rent bg-center bg-no-repeat bg-cover h-[70vh] md:h-[40vh] relative">
                 <div className="h-full bg-opacity-50 bg-black flex items-center justify-center flex-col">
                     <div className="mx-2 mt-20 text-center">
                         <p className="text-gray-200 mb-4 text-4xl font-bold leading-tight">

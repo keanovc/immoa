@@ -47,7 +47,7 @@ const defaultData = {
     description: "",
     type: "",
     bor: "",
-    sold: false,
+    sold: "no",
     agencyId: null,
 };
 
@@ -59,20 +59,21 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
     });
 
     const handleData = (values) => {
-        console.log(values);
         onSubmit(values);
     };
 
     return (
         <form onSubmit={handleSubmit(handleData)} noValidate={true} className="py-8 rounded text-black w-full">
             <h1 className="mb-16 text-3xl text-center">{label}</h1>
-            <FileInput
-                name="image"
-                onChange={handleChange}
-                value={values.image}
-                error={errors.image}
-                disabled={disabled}
-            />
+            {!initialData.id && (
+                <FileInput
+                    name="image"
+                    label="Image"
+                    value={values.image}
+                    onChange={handleChange}
+                    error={errors.image}
+                />
+            )}
             <div className="flex flex-wrap -mx-3 mb-3 px-3">
                 <Select
                     name="sold"
@@ -82,8 +83,8 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     error={errors.sold}
                     disabled={disabled}
                     options={[
-                        { value: false, label: t('properties.available') },
-                        { value: true, label: t('properties.sold') },
+                        { value: "no", label: t('properties.available') },
+                        { value: "yes", label: t('properties.sold') },
                     ]}
                 />
             </div>
@@ -236,6 +237,20 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     disabled={disabled}
                 />
             </div>
+            {/* <div className="flex flex-wrap -mx-3 mb-3">
+                <div className="w-full px-3 md:w-1/2">
+                    <input type="radio" value="false" name="sold" /> Available
+                    <input type="radio" value="true" name="sold" /> Sold
+                </div>
+                <div className="w-full px-3 md:w-1/2">
+                    <Button
+                        type={'submit'}
+                        disabled={disabled}
+                    >
+                        {label}
+                    </Button>
+                </div>
+            </div> */}
             <Button
                 type={'submit'}
                 disabled={disabled}

@@ -36,7 +36,7 @@ const Home = () => {
                     <div className="flex flex-col items-center w-full lg:flex-row lg:w-1/2">
                         <div className="max-w-lg">
                             <h1 className="text-xl tracking-wide text-gray-800 lg:text-4xl">{t('home.buy')}</h1>
-                            <p className="mt-4 text-gray-600">{t('home.lorem')}</p>
+                            <p className="mt-4 text-gray-600">{t('home.buytext')}</p>
                             <div className="mt-6">
                                 <Link to={HomeRoutes.Buy} className="inline-block px-3 py-2 font-semibold text-center text-white transition-colors duration-200 transform bg-gray-600 rounded-md hover:bg-gray-500">{t('buttons.seemore')}</Link>
                             </div>
@@ -62,7 +62,7 @@ const Home = () => {
                     <div className="flex flex-col items-center w-full md:ml-20 lg:flex-row lg:w-1/2">
                         <div className="max-w-lg">
                             <h1 className="text-xl tracking-wide text-gray-800 lg:text-4xl">{t('home.rent')}</h1>
-                            <p className="mt-4 text-gray-600">{t('home.lorem')}</p>
+                            <p className="mt-4 text-gray-600">{t('home.renttext')}</p>
                             <div className="mt-6">
                                 <Link to={HomeRoutes.Rent} className="inline-block px-3 py-2 font-semibold text-center text-white transition-colors duration-200 transform bg-gray-600 rounded-md hover:bg-gray-500">{t('buttons.seemore')}</Link>
                             </div>

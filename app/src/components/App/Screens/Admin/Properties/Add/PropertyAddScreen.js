@@ -23,7 +23,7 @@ const PropertiesAddScreen = () => {
     };
 
     return (
-        <div className="w-4/12 mx-auto mt-36">
+        <div className="w-10/12 lg:w-4/12 mx-auto mt-36">
             {error && <Alert color="danger">{error}</Alert>}
             <PropertyForm
                 onSubmit={handleSubmit}

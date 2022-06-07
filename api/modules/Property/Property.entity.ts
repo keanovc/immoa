@@ -57,7 +57,7 @@ export default class Property extends BaseEntity {
 
     @IsDefined()
     @Column()
-    sold: boolean;
+    sold: string;
 
     @ManyToOne(() => Agency, (agency) => agency.properties)
     agency: Agency;

@@ -8,6 +8,8 @@ const PropertyDetailScreen = () => {
     const { t } = useTranslation();
     const { property } = useOutletContext();
 
+    console.log(property);
+
     useTitle(property ? property.type : "");
 
     return (
@@ -17,7 +19,7 @@ const PropertyDetailScreen = () => {
                     <div className="relative">
                         <img className="mb-3 w-full h-96 object-cover rounded-xl shadow-lg mx-auto" src={getImagePath(property.image)} alt="property"/>
                         {
-                            property.sold === true ?
+                            property.sold === "yes" ?
                                 <div className="badge absolute top-5 right-5 bg-red-500 m-1 text-gray-200 p-1 px-2 text-md font-bold rounded">{t("properties.sold")}</div>
                                 :
                                 <div className="badge absolute top-5 right-5 bg-green-500 m-1 text-gray-200 p-1 px-2 text-md font-bold rounded">{t("properties.available")}</div>

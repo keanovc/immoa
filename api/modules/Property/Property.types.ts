@@ -12,7 +12,7 @@ export interface PropertyBody {
     image?: string | null;
     type: string;
     bor: string;
-    sold: boolean;
+    sold: string;
     agency?: Agency;
     agencyId: number;
 }
