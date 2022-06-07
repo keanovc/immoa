@@ -10,6 +10,7 @@ import Input from '../../../Design/Form/Input';
 import * as MaterialDesign from "react-icons/md";
 import * as yup from "yup";
 import useForm from '../../../../core/hooks/useForm';
+import Button from '../../../Design/Button/Button';
 
 const schema = yup.object().shape({
     name: yup.string().required(),
@@ -49,10 +50,10 @@ const Signup = () => {
     return (
         <header className="sign bg-center bg-no-repeat bg-cover h-screen relative flex flex-col">
             <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-                <form onSubmit={handleSubmit(handleData)} className="bg-white px-6 py-8 rounded-xl shadow-md text-black w-full">
+                <form onSubmit={handleSubmit(handleData)} className="bg-white px-6 py-8 rounded-xl shadow-md text-[#1F2937] w-full">
                     <p className='text-red-500'>{error}</p>
                     <Link to="/" className='text-2xl'><MaterialDesign.MdClose className='text-2xl'/></Link>
-                    <h1 className="mb-8 text-3xl text-center">{t('signup.title')}</h1>
+                    <h1 className="mb-8 text-3xl text-center uppercase">{t('signup.title')}</h1>
 
                     <Input 
                         type={'text'}
@@ -87,10 +88,12 @@ const Signup = () => {
                         error={errors.password}
                     />
 
-                    <button
-                        type="submit"
+                    <Button
+                        type={'submit'}
                         disabled={isLoading}
-                        className="w-full text-center py-3 rounded bg-gray-800 text-white hover:bg-green-dark focus:outline-none my-1">{t('buttons.createaccount')}</button>
+                    >
+                        {t('buttons.createaccount')}
+                    </Button>
                 </form>
 
                 <div className="text-gray-300 mt-6">

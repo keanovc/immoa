@@ -5,7 +5,7 @@ import Navbar from "../../../Design/Navbar/Navbar";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { AiFillHeart } from 'react-icons/ai';
+// import { AiFillHeart } from 'react-icons/ai';
 import { MdSpaceDashboard } from 'react-icons/md';
 import { isAdmin, isRealtor } from "../../../../core/modules/users/utils";
 
@@ -46,9 +46,6 @@ const PublicHeader = () => {
                     <button onClick={handleToggle} id="dropdownDefault" data-dropdown-toggle="dropdown" className="flex justify-center items-center outline-none space-x-3 cursor-pointer bg-transparent px-5 py-2 rounded-md" type="button">
                         <div className="w-12 h-12 rounded-full overflow-hidden border-2 dark:border-white border-gray-900">
                             <img src="https://www.pngkey.com/png/full/73-730477_first-name-profile-image-placeholder-png.png" alt="" className="w-full h-full object-cover" />
-                        </div>
-                        <div className="font-semibold dark:text-white text-gray-900 text-lg">
-                            <div className="cursor-pointer">{ auth.user.name + ' ' + auth.user.surname }</div>
                         </div>    
                     </button>
                     <div id="dropdown" className={`absolute w-44 px-5 py-3 backdrop-blur-md bg-white/30 bg-white rounded-lg shadow border dark:border-transparent top-20 z-10 ${toggle ? '' : 'hidden'}`}>
@@ -60,14 +57,6 @@ const PublicHeader = () => {
                                         <svg className="w- h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><MdSpaceDashboard className="text-2xl"/></svg>
                                     </div>
                                     Dashboard
-                                </Link>
-                            </li>
-                            <li className="font-medium mt-3">
-                                <Link to={ProfileRoutes.Favorites} className="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700">
-                                    <div className="mr-3">
-                                        <svg className="w- h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><AiFillHeart className="text-2xl"/></svg>
-                                    </div>
-                                    Favorites
                                 </Link>
                             </li>
                             <li className="font-medium mt-3">
@@ -100,10 +89,7 @@ const PublicHeader = () => {
                     <button onClick={handleToggle} id="dropdownDefault" data-dropdown-toggle="dropdown" className="flex justify-center items-center outline-none space-x-3 cursor-pointer bg-transparent px-5 py-2 rounded-md" type="button">
                         <div className="w-12 h-12 rounded-full overflow-hidden border-2 dark:border-white border-gray-900">
                             <img src="https://www.pngkey.com/png/full/73-730477_first-name-profile-image-placeholder-png.png" alt="" className="w-full h-full object-cover" />
-                        </div>
-                        <div className="font-semibold dark:text-white text-gray-900 text-lg">
-                            <div className="cursor-pointer">{ auth.user.name + ' ' + auth.user.surname }</div>
-                        </div>    
+                        </div>  
                     </button>
                     <div id="dropdown" className={`absolute w-44 px-5 py-3 backdrop-blur-md bg-white/30 bg-white rounded-lg shadow border dark:border-transparent top-20 z-10 ${toggle ? '' : 'hidden'}`}>
                         <hr className="dark:border-white" />
@@ -114,14 +100,6 @@ const PublicHeader = () => {
                                         <svg className="w- h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><MdSpaceDashboard className="text-2xl"/></svg>
                                     </div>
                                     Dashboard
-                                </Link>
-                            </li>
-                            <li className="font-medium mt-3">
-                                <Link to={ProfileRoutes.Favorites} className="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700">
-                                    <div className="mr-3">
-                                        <svg className="w- h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><AiFillHeart className="text-2xl"/></svg>
-                                    </div>
-                                    Favorites
                                 </Link>
                             </li>
                             <li className="font-medium mt-3">
@@ -154,21 +132,21 @@ const PublicHeader = () => {
                         <div className="w-12 h-12 rounded-full overflow-hidden border-2 dark:border-white border-gray-900">
                             <img src="https://www.pngkey.com/png/full/73-730477_first-name-profile-image-placeholder-png.png" alt="" className="w-full h-full object-cover" />
                         </div>
-                        <div className="font-semibold dark:text-white text-gray-900 text-lg">
+                        {/* <div className="font-semibold dark:text-white text-gray-900 text-lg">
                             <div className="cursor-pointer">{ auth.user.name + ' ' + auth.user.surname }</div>
-                        </div>    
+                        </div>     */}
                     </button>
                     <div id="dropdown" className={`absolute w-44 px-5 py-3 backdrop-blur-md bg-white/30 bg-white rounded-lg shadow border dark:border-transparent top-20 z-10 ${toggle ? '' : 'hidden'}`}>
                         <hr className="dark:border-white" />
                         <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
-                            <li className="font-medium mt-3">
+                            {/* <li className="font-medium mt-3">
                                 <Link to={ProfileRoutes.Favorites} className="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700">
                                     <div className="mr-3">
                                         <svg className="w- h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><AiFillHeart className="text-2xl"/></svg>
                                     </div>
                                     Favorites
                                 </Link>
-                            </li>
+                            </li> */}
                             <li className="font-medium mt-3">
                                 <Link to={route(ProfileRoutes.Profile, { id: auth.user.id, })} className="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700">
                                     <div className="mr-3">

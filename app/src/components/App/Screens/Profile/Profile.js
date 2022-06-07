@@ -4,6 +4,7 @@ import { useOutletContext } from "react-router-dom";
 import { formatName } from "../../../../core/modules/users/utils";
 import { Link } from "react-router-dom";
 import { ProfileRoutes, route } from "../../../../core/routing";
+import Button from "../../../Design/Button/Button";
 
 const Profile = () => {
     const { t } = useTranslation();
@@ -22,11 +23,11 @@ const Profile = () => {
                         <div className="mt-8 ">
                             <h2 className="text-white font-bold text-2xl tracking-wide text-center">{user.name} {user.surname}</h2>
                         </div>
-                        <p className="text-gray-400 font-semibold mt-4 text-center" >
+                        <p className="text-gray-400 font-semibold mt-4 mb-5 text-center" >
                             {user.email}
                         </p>
                         <Link to={route(ProfileRoutes.EditProfile, { id: user.id })}>
-                            <button className="w-full text-center py-3 mt-10 rounded-xl bg-gray-400 text-black hover:bg-green-dark focus:outline-none my-1 transform transition duration-300 hover:scale-105 ease-in-out">{t('buttons.edit')}</button>
+                            <Button>{t('buttons.edit')}</Button>
                         </Link>
                     </section>
                 </div>

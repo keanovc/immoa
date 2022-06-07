@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import PasswordInput from "../../../../Design/Form/PasswordInput";
 import Select from "../../../../Design/Form/Select";
 import AgencySelect from "../../Agencies/Select/AgencySelect";
+import Button from "../../../../Design/Button/Button";
 
 // dynamic schema
 const getSchema = (isUpdate) => {
@@ -147,13 +148,12 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full px-3">
-                    <button
-                        type="submit"
-                        className="w-full text-center py-3 rounded bg-gray-800 text-white hover:bg-green-dark focus:outline-none my-1"
+                    <Button
+                        type={'submit'}
                         disabled={disabled}
                     >
                         {label}
-                    </button>
+                    </Button>
                 </div>
             </div>
         </form>

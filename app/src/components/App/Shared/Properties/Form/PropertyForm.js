@@ -6,7 +6,8 @@ import * as yup from "yup";
 import Select from "../../../../Design/Form/Select";
 import Textarea from "../../../../Design/Form/Textarea";
 import AgencySelect from "../../Agencies/Select/AgencySelect";
-import FileInput from "../../../../Design/FileInput";
+import FileInput from "../../../../Design/Form/FileInput";
+import Button from "../../../../Design/Button/Button";
 
 const schema = yup.object().shape({
     zipCode: yup.string().required("Zip code is required"),
@@ -235,13 +236,12 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     disabled={disabled}
                 />
             </div>
-            <button
-                type="submit"
-                className="w-full text-center py-3 rounded bg-gray-800 text-white hover:bg-green-dark focus:outline-none my-1"
+            <Button
+                type={'submit'}
                 disabled={disabled}
             >
                 {label}
-            </button>
+            </Button>
         </form>
     )
 }

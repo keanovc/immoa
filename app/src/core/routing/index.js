@@ -8,6 +8,9 @@ const HomeRoutes = {
     Index: "/",
     Buy: "/buy",
     Rent: "/rent",
+    Properties: "/properties",
+    PropertiesBuy: "/properties/buy",
+    PropertiesRent: "/properties/rent",
     Contact: "/contact",
     Detail: "/detail/:id",
 };

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { route } from "../../../core/routing";
 import DeleteButton from "../../App/Shared/Button/DeleteButton";
 import { AiFillEye } from "react-icons/ai";
+import PropTypes from "prop-types";
 
 const Table = ({ data = [], handleDelete, add, button, detail, group }) => {
     return (
@@ -88,6 +89,15 @@ const Table = ({ data = [], handleDelete, add, button, detail, group }) => {
             </div>
         </div>
     )
+}
+
+Table.propTypes = {
+    data: PropTypes.array,
+    handleDelete: PropTypes.func,
+    add: PropTypes.string,
+    button: PropTypes.string,
+    detail: PropTypes.string,
+    group: PropTypes.string,
 }
 
 export default Table

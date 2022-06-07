@@ -4,13 +4,13 @@ import { AuthRoutes, HomeRoutes, ProfileRoutes, AgencyRoutes, AdminRoutes } from
 import AuthProvider from './Auth/AuthProvider';
 import { UserRoles } from '../../core/modules/users/constants';
 
-import Home from './container/Home/Home';
+import Home from './Screens/Home/Home';
 import Signup from './Auth/Signup/Signup';
 import Signin from './Auth/Signin/Signin';
-import Buy from './container/Buy/Buy';
-import Rent from './container/Rent/Rent';
-import Detail from './container/Detail/Detail';
-import Contact from './container/Contact/Contact';
+import Buy from './Screens/Buy/Buy';
+import Rent from './Screens/Rent/Rent';
+import Detail from './Screens/Detail/Detail';
+import Contact from './Screens/Contact/Contact';
 
 import OnboardingLayout from './Auth/OnboardingLayout';
 import ProfileLayout from './Auth/ProfileLayout';
@@ -18,33 +18,33 @@ import PublicLayout from './Auth/PublicLayout';
 import AdminLayout from './Auth/AdminLayout';
 import AgencyLayout from './Auth/AgencyLayout';
 
-import Profile from './container/Profile/Profile';
-import ProfileEdit from './container/Profile/ProfileEdit';
+import Profile from './Screens/Profile/Profile';
+import ProfileEdit from './Screens/Profile/ProfileEdit';
 import RoleContainer from './Auth/RoleContainer';
 
-import AgencyPropertiesLayout from './container/Agency/Properties/AgencyPropertiesLayout';
-import AgencyPropertiesOverviewScreen from './container/Agency/Properties/Overview/AgencyPropertiesOverviewScreen';
+import AgencyPropertiesLayout from './Screens/Agency/Properties/AgencyPropertiesLayout';
+import AgencyPropertiesOverviewScreen from './Screens/Agency/Properties/Overview/AgencyPropertiesOverviewScreen';
 
-import UsersLayout from './container/Admin/Users/UsersLayout';
-import UsersOverviewScreen from './container/Admin/Users/Overview/UsersOverviewScreen';
-import UserDetailLayout from './container/Admin/Users/Detail/UserDetailLayout';
-import UserDetailScreen from './container/Admin/Users/Detail/UserDetailScreen';
-import UserEditScreen from './container/Admin/Users/Edit/UserEditScreen';
-import UserAddScreen from './container/Admin/Users/Add/UserAddScreen';
+import UsersLayout from './Screens/Admin/Users/UsersLayout';
+import UsersOverviewScreen from './Screens/Admin/Users/Overview/UsersOverviewScreen';
+import UserDetailLayout from './Screens/Admin/Users/Detail/UserDetailLayout';
+import UserDetailScreen from './Screens/Admin/Users/Detail/UserDetailScreen';
+import UserEditScreen from './Screens/Admin/Users/Edit/UserEditScreen';
+import UserAddScreen from './Screens/Admin/Users/Add/UserAddScreen';
 
-import PropertiesLayout from './container/Admin/Properties/PropertiesLayout';
-import PropertiesOverviewScreen from './container/Admin/Properties/Overview/PropertiesOverviewScreen';
-import PropertyDetailLayout from './container/Admin/Properties/Detail/PropertyDetailLayout';
-import PropertyDetailScreen from './container/Admin/Properties/Detail/PropertyDetailScreen';
-import PropertyEditScreen from './container/Admin/Properties/Edit/PropertyEditScreen';
-import PropertyAddScreen from './container/Admin/Properties/Add/PropertyAddScreen';
+import PropertiesLayout from './Screens/Admin/Properties/PropertiesLayout';
+import PropertiesOverviewScreen from './Screens/Admin/Properties/Overview/PropertiesOverviewScreen';
+import PropertyDetailLayout from './Screens/Admin/Properties/Detail/PropertyDetailLayout';
+import PropertyDetailScreen from './Screens/Admin/Properties/Detail/PropertyDetailScreen';
+import PropertyEditScreen from './Screens/Admin/Properties/Edit/PropertyEditScreen';
+import PropertyAddScreen from './Screens/Admin/Properties/Add/PropertyAddScreen';
 
-import AgenciesLayout from './container/Admin/Agencies/AgenciesLayout';
-import AgenciesOverviewScreen from './container/Admin/Agencies/Overview/AgenciesOverviewScreen';
-import AgencyAddScreen from './container/Admin/Agencies/Add/AgencyAddScreen';
-import AgencyDetailLayout from './container/Admin/Agencies/Detail/AgencyDetailLayout';
-import AgencyDetailScreen from './container/Admin/Agencies/Detail/AgencyDetailScreen';
-import AgencyEditScreen from './container/Admin/Agencies/Edit/AgencyEditScreen';
+import AgenciesLayout from './Screens/Admin/Agencies/AgenciesLayout';
+import AgenciesOverviewScreen from './Screens/Admin/Agencies/Overview/AgenciesOverviewScreen';
+import AgencyAddScreen from './Screens/Admin/Agencies/Add/AgencyAddScreen';
+import AgencyDetailLayout from './Screens/Admin/Agencies/Detail/AgencyDetailLayout';
+import AgencyDetailScreen from './Screens/Admin/Agencies/Detail/AgencyDetailScreen';
+import AgencyEditScreen from './Screens/Admin/Agencies/Edit/AgencyEditScreen';
 
 function App() {
   return (
@@ -67,24 +67,6 @@ function App() {
             <Route path={AuthRoutes.Index} element={<OnboardingLayout />}>
               <Route path={AuthRoutes.Signup} element={<Signup />} />
               <Route path={AuthRoutes.Signin} element={<Signin />} />
-            </Route>
-          </Route>
-          
-          <Route
-            path={AgencyRoutes.Index}
-            element={
-                <RoleContainer roles={[UserRoles.Realtor]}>
-                    <AgencyLayout />
-                </RoleContainer>
-            }>
-            <Route
-                path={AgencyRoutes.Index}
-                element={<Navigate to={AgencyRoutes.Properties} />}
-            />
-            <Route
-              path={AgencyRoutes.Properties}
-              element={<AgencyPropertiesLayout />}>
-              <Route index element={<AgencyPropertiesOverviewScreen />} />
             </Route>
           </Route>
 
@@ -128,6 +110,24 @@ function App() {
                 <Route index element={<AgencyDetailScreen />} />
                 <Route path={AdminRoutes.EditAgency} element={<AgencyEditScreen />} />
               </Route>
+            </Route>
+          </Route>
+          
+          <Route
+            path={AgencyRoutes.Index}
+            element={
+                <RoleContainer roles={[UserRoles.Realtor]}>
+                    <AgencyLayout />
+                </RoleContainer>
+            }>
+            <Route
+                path={AgencyRoutes.Index}
+                element={<Navigate to={AgencyRoutes.Properties} />}
+            />
+            <Route
+              path={AgencyRoutes.Properties}
+              element={<AgencyPropertiesLayout />}>
+              <Route index element={<AgencyPropertiesOverviewScreen />} />
             </Route>
           </Route>
           

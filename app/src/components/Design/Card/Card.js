@@ -3,12 +3,13 @@ import { HomeRoutes } from '../../../core/routing';
 import { Link } from 'react-router-dom';
 import { route } from '../../../core/routing';
 import { getImagePath } from '../../../core/helpers/api';
+import PropTypes from "prop-types";
 
-export const Card = ({ property, auth }) => {
+const Card = ({ property, auth }) => {
     return (
-            <div className="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
+            <div className="p-4 mx-auto w-10/12 md:w-11/12">
                 <Link to={route(HomeRoutes.Detail, { id: property.id, })}>
-                    <div className="bg-white shadow-xl rounded-lg overflow-hidden transform transition duration-300 hover:scale-105">
+                    <div className="bg-white shadow-xl rounded-xl overflow-hidden transform transition duration-300 hover:scale-105">
                         <div className="bg-cover bg-center h-56 p-4" style={{ backgroundImage: `url(${getImagePath(property.image)})` }}>
                             {
                                 property.sold === true ? (
@@ -19,9 +20,14 @@ export const Card = ({ property, auth }) => {
                             }
                         </div>
                         <div className="p-4">
-
                             <p className="uppercase tracking-wide text-sm font-bold text-gray-700">{property.type} • {property.year}</p>
-                            <p className="text-3xl text-gray-900">{formatPrice(property.price)}</p>
+                            {
+                                property.bor === "buy" ? (
+                                    <p className="text-3xl text-gray-900">{formatPrice(property.price)}</p>
+                                ) : (
+                                    <p className="text-3xl text-gray-900">{formatPrice(property.price)} / month</p>
+                                )
+                            }
                             <p className="text-gray-700">{
                                 auth ? (
                                     property.address + ', '
@@ -45,14 +51,14 @@ export const Card = ({ property, auth }) => {
                         {
                             auth ?
                             <div className="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
-                                <div className="text-xs uppercase font-bold text-gray-600 tracking-wide">Realtor</div>
+                                <div className="text-xs uppercase font-bold text-gray-600 tracking-wide">Agency</div>
                                 <div className="flex items-center pt-2">
                                     <div className="bg-cover bg-center w-10 h-10 rounded-full mr-3">
-                                        <img src="https://www.kindpng.com/picc/m/782-7820441_female-profile-picture-placeholder-png-download-down-steal.png" alt="realtor" />
+                                        <img src="https://ribboncommunications.com/sites/default/files/styles/large/public/person-placeholder_0.png?itok=LIcM1gRj" alt="agency" />
                                     </div>
                                     <div>
-                                        <p className="font-bold text-gray-900">Catherine Heffner</p>
-                                        <p className="text-sm text-gray-700">+324 68 54 63 58</p>
+                                        <p className="font-bold text-gray-900">{property.agency.name}</p>
+                                        <p className="text-sm text-gray-700">{property.agency.phone}</p>
                                     </div>
                                 </div>
                             </div> : null
@@ -62,3 +68,10 @@ export const Card = ({ property, auth }) => {
             </div>
     )
 }
+
+Card.propTypes = {
+    property: PropTypes.object.isRequired,
+    auth: PropTypes.bool.isRequired
+}
+
+export default Card;

@@ -38,7 +38,8 @@
         "edit": "Edit Profile"
     },
     "contact": {
-        "title": "Contact"
+        "title": "Contact",
+        "contactMe": "Contact Me"
     },
     "signin": {
         "title": "Sign In",
@@ -131,6 +132,7 @@
         "image": "Image",
         "buy": "Buy",
         "rent": "Rent",
+        "agency": "Agency",
         "type": {
             "house": "House",
             "mansion": "Mansion",

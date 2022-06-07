@@ -1,5 +1,4 @@
-import images from "../../constants/images";
-import { Card } from "../../../Design/Card/Card";
+import Card from "../../../Design/Card/Card";
 import { useTranslation } from "react-i18next";
 import useTitle from "../../../../core/hooks/useTitle";
 import useFetch from "../../../../core/hooks/useFetch";
@@ -10,7 +9,9 @@ const Rent = () => {
     useTitle(t("properties.title"));
 
     const { auth } = useAuthContext();
-    const { data } = useFetch(`/properties`);
+    const { data } = useFetch(auth ? `/propertiesrent` : `/propertiesrentpublic`);
+
+    console.log(data);
 
     return (
         <>
@@ -35,13 +36,15 @@ const Rent = () => {
                 </div>
             </header>
 
-            <div id="houses" className="bg-gray-200 flex items-center w-9/12 mx-auto flex-wrap mt-10">
+            <div id="houses" className="container mx-auto grid gap-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-10">
                 {
                     data ? data.map(property => (
-                        property.bor === 'rent' ? (
-                            <Card key={property.id} property={property} auth={auth}/>
-                        ) : null
-                    )) : null
+                        <Card key={property.id} property={property} auth={auth}/>
+                    )) : <div className="w-full h-full flex items-center justify-center">
+                            <p className="text-gray-200 mb-4 text-2xl font-bold leading-tight">
+                                No properties found.
+                            </p>
+                        </div>
                 }
             </div>
         </>

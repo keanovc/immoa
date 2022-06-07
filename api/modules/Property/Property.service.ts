@@ -18,27 +18,6 @@ export default class PropertyService {
         return properties;
     }
 
-    // allWithout = async () => {
-    //     const properties = await this.repository.find({
-    //         select: {
-    //             id: true,
-    //             zipCode: true,
-    //             city: true,
-    //             rooms: true,
-    //             bathrooms: true,
-    //             area: true,
-    //             price: true,
-    //             image: true,
-    //             type: true,
-    //             year: true,
-    //             sold: true,
-    //             bor: true,
-    //             description: true,
-    //         }
-    //     });
-    //     return properties;
-    // }
-
     allByAgency = async (agencyId: number) => {
         const properties = await this.repository.find({
             relations: ["agency"],
@@ -47,10 +26,58 @@ export default class PropertyService {
         return properties;
     }
 
+    allBuy = async () => {
+        const properties = await this.repository.find({
+            where: {
+                bor: "buy"
+            },
+            relations: ["agency"]
+        });
+        return properties;
+    }
+
+    allBuyPublic = async () => {
+        const properties = await this.repository.find({
+            where: {
+                bor: "buy",
+            },
+            select: ["id", "zipCode", "city", "rooms", "bathrooms", "area", "description", "image", "type", "bor", "year", "price", "sold"]
+        });
+        return properties;
+    }
+
+    allRent = async () => {
+        const properties = await this.repository.find({
+            where: {
+                bor: "rent"
+            },
+            relations: ["agency"]
+        });
+        return properties;
+    }
+
+    allRentPublic = async () => {
+        const properties = await this.repository.find({
+            where: {
+                bor: "rent",
+            },
+            select: ["id", "zipCode", "city", "rooms", "bathrooms", "area", "description", "image", "type", "bor", "year", "price", "sold"]
+        });
+        return properties;
+    }
+
     findOne = async (id: number) => {
         const property = await this.repository.findOne({
             where: { id },
             relations: ["agency"]
+        });
+        return property;
+    }
+
+    findOnePublic = async (id: number) => {
+        const property = await this.repository.findOne({
+            where: { id },
+            select: ["id", "zipCode", "city", "rooms", "bathrooms", "area", "description", "image", "type", "bor", "year", "price", "sold"]
         });
         return property;
     }

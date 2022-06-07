@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import Input from "../../../../Design/Form/Input";
 import * as yup from "yup";
 import Textarea from "../../../../Design/Form/Textarea";
+import Button from "../../../../Design/Button/Button";
 
 const schema = yup.object().shape({
     name: yup.string().required(),
@@ -106,13 +107,12 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     disabled={disabled}
                 />
             </div>
-            <button
-                type="submit"
-                className="w-full text-center py-3 rounded bg-gray-800 text-white hover:bg-green-dark focus:outline-none my-1"
+            <Button
+                type={'submit'}
                 disabled={disabled}
             >
                 {label}
-            </button>
+            </Button>
         </form>
     )
 }

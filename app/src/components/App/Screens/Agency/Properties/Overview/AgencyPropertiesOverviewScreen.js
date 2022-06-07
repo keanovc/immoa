@@ -2,18 +2,21 @@ import Table from "../../../../../Design/Table/Table";
 import { AdminRoutes } from "../../../../../../core/routing";
 import { useTranslation } from "react-i18next";
 import useFetch from "../../../../../../core/hooks/useFetch";
+import Alert from "../../../../../Design/Alert/Alert";
 
 const AgencyPropertiesOverviewScreen = () => {
     const { t } = useTranslation();
 
-    const { isLoading, data: properties, error, invalidate } = useFetch("/properties");
+    const { isLoading, data: properties, error, invalidate } = useFetch("/propertiesbyagency");
 
     const handleDelete = () => {
         invalidate();
     };
 
     if (error) {
-        return <div>{error}</div>;
+        return <div className="mt-36 w-4/12 mx-auto">
+            <Alert color="danger">{error}</Alert>
+        </div>
     }
 
     return (

@@ -37,17 +37,41 @@ export default class PropertyController {
     //     return res.json(properties);
     // }
 
-    // all = async (req: AuthRequest, res: Response, next: NextFunction) => {
-    //     const properties = req.user
-    //         ? await this.propertyService.all()
-    //         : await this.propertyService.allWithout();
-    //     return res.json(properties);
-    // };
-
-    all = async (req: Request, res: Response, next: NextFunction) => {
+    all = async (req: AuthRequest, res: Response, next: NextFunction) => {
         const properties = await this.propertyService.all();
         return res.json(properties);
-    };
+    }
+
+    allByAgency = async (
+        req: AuthRequest, 
+        res: Response, 
+        next: NextFunction
+    ) => {
+        console.log(req.user);
+        
+        const properties = await this.propertyService.allByAgency(req.user.agency.id);
+        return res.json(properties);
+    }
+
+    allBuy = async (req: Request, res: Response, next: NextFunction) => {
+        const properties = await this.propertyService.allBuy();
+        return res.json(properties);
+    }
+
+    allRent = async (req: Request, res: Response, next: NextFunction) => {
+        const properties = await this.propertyService.allRent();
+        return res.json(properties);
+    }
+
+    allBuyPublic = async (req: Request, res: Response, next: NextFunction) => {
+        const properties = await this.propertyService.allBuyPublic();
+        return res.json(properties);
+    }
+
+    allRentPublic = async (req: Request, res: Response, next: NextFunction) => {
+        const properties = await this.propertyService.allRentPublic();
+        return res.json(properties);
+    }
 
     find = async (
         req: AuthRequest<{ id: string }>,
@@ -55,7 +79,23 @@ export default class PropertyController {
         next: NextFunction
     ) => {
         try {
-            const property = await this.propertyService.findOneBy({ id: req.params.id });
+            const property = await this.propertyService.findOne(parseInt(req.params.id));
+            if (!property) {
+                next(new NotFoundError());
+            }
+            res.status(200).json(property);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    findPublic = async (
+        req: Request<{ id: string }>,
+        res: Response,
+        next: NextFunction
+    ) => {
+        try {
+            const property = await this.propertyService.findOnePublic(parseInt(req.params.id));
             if (!property) {
                 next(new NotFoundError());
             }

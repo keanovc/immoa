@@ -5,7 +5,7 @@ const Input = ({ type, name, placeholder, value, onChange, error, disabled, ...r
     <>
       <input 
         type={type}
-        className={`form-control ${error ? "is-invalid block border border-gray-300 w-full p-3 rounded mb-1" : "block border border-gray-300 w-full p-3 rounded mb-4"}`}
+        className={`form-control ${error ? "is-invalid block border border-gray-300 w-full p-3 rounded-lg mb-1" : "block border border-gray-300 w-full p-3 rounded-lg mb-4"}`}
         name={name}
         id={name}
         placeholder={placeholder}

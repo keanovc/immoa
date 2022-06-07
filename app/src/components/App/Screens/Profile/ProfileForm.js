@@ -3,6 +3,7 @@ import Input from "../../../Design/Form/Input";
 import PasswordInput from "../../../Design/Form/PasswordInput";
 import * as yup from "yup";
 import useForm from "../../../../core/hooks/useForm";
+import Button from "../../../Design/Button/Button";
 
 const getSchema = (isUpdate) => {
     return yup.object().shape({
@@ -86,10 +87,9 @@ const ProfileForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 </p>
             )}
 
-            <button
-                type="submit"
-                disabled={disabled}
-                className="w-full text-center py-3 rounded bg-gray-800 text-white hover:bg-green-dark focus:outline-none my-1">{t('buttons.edit')}</button>
+            <Button type={'submit'} disabled={disabled}>
+                {t('buttons.edit')}
+            </Button>
         </form>
     )
 }

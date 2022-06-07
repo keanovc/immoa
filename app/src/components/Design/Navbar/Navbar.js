@@ -5,9 +5,9 @@ import images from '../../App/constants/images';
 
 const Navbar = ({ navItems = [], children, dashboard, color = '' }) => {
     return (
-        <nav className={`h-24 ${color} absolute inset-x-0 top-0 border-b flex flex-row justify-between z-10 text-white bg-transparent`}>
+        <nav className={`h-24 ${color} absolute inset-x-0 top-0 border-b flex flex-row justify-between z-10 text-white`}>
             <div className="container flex flex-wrap justify-between items-center mx-auto">
-                <Link to={dashboard} className="flex items-center w-32 flex md:order-2">
+                <Link to={dashboard} className="flex items-center w-32 md:order-2">
                     <img src={images.logowhite} alt="logo" />
                 </Link>
                 <div className="flex md:order-3">
@@ -47,6 +47,8 @@ Navbar.propTypes = {
         })
     ).isRequired,
     children: PropTypes.node,
+    dashboard: PropTypes.string,
+    color: PropTypes.string,
 };
 
 export default Navbar;

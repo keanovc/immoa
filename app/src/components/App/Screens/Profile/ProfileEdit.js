@@ -1,4 +1,3 @@
-import { useTranslation } from "react-i18next";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import useMutation from "../../../../core/hooks/useMutation";
 import { ProfileRoutes, route } from "../../../../core/routing";
@@ -6,7 +5,6 @@ import ProfileForm from "./ProfileForm";
 import Alert from "../../../Design/Alert/Alert";
 
 const ProfileEdit = () => {
-    const { t } = useTranslation();
     const { user, onUserUpdate } = useOutletContext();
     const navigate = useNavigate();
   

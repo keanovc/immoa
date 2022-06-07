@@ -8,6 +8,7 @@ import PropertyController from "../modules/Property/Property.controller";
 import UserController from "../modules/User/User.controller";
 import AgencyController from "../modules/Agency/Agency.controller";
 import { UserRole } from "../modules/User/User.constants";
+import User from "../modules/User/User.entity";
 
 const handleErrors =
     (func: (req: any, res: Response, next: NextFunction) => Promise<any>) =>
@@ -21,12 +22,13 @@ const handleErrors =
   
 const registerOnboardingRoutes = (router: Router) => {
     const authController = new AuthController();
-    const propertyController = new PropertyController();
-
     router.post("/login", authLocal, handleErrors(authController.login));
     router.post("/register", handleErrors(authController.register));
-    router.get("/properties", handleErrors(propertyController.all));
-    router.get("/properties/:id", handleErrors(propertyController.find));
+    
+    const propertyController = new PropertyController();
+    router.get("/propertiesbuypublic", handleErrors(propertyController.allBuyPublic));
+    router.get("/propertiesrentpublic", handleErrors(propertyController.allRentPublic));
+    router.get("/propertiespublic/:id", handleErrors(propertyController.findPublic));
 };
 
 const registerAdminRoutes = (router: Router) => {
@@ -37,6 +39,7 @@ const registerAdminRoutes = (router: Router) => {
     adminRouter.get("/users/:id", handleErrors(userController.find));
 
     const propertyController = new PropertyController();
+    adminRouter.get("/properties", handleErrors(propertyController.all));
     adminRouter.post("/properties", handleErrors(propertyController.create));
     adminRouter.patch("/properties/:id", handleErrors(propertyController.update));
     adminRouter.delete("/properties/:id", handleErrors(propertyController.delete));
@@ -51,18 +54,14 @@ const registerAdminRoutes = (router: Router) => {
     router.use(withRole(UserRole.Admin), adminRouter);
 };
 
-// const registerRealtorRoutes = (router: Router) => {
-//     const realtorRouter = Router();
+const registerRealtorRoutes = (router: Router) => {
+    const realtorRouter = Router();
 
-//     const propertyController = new PropertyController();
-//     realtorRouter.get("/properties", handleErrors(propertyController.all));
-//     realtorRouter.get("/properties/:id", handleErrors(propertyController.find));
-//     realtorRouter.post("/properties", handleErrors(propertyController.create));
-//     realtorRouter.patch("/properties/:id", handleErrors(propertyController.update));
-//     realtorRouter.delete("/properties/:id", handleErrors(propertyController.delete));
+    const propertyController = new PropertyController();
+    realtorRouter.get("/propertiesbyagency", handleErrors(propertyController.allByAgency));
 
-//     router.use(withRole(UserRole.Realtor), realtorRouter);
-// };
+    router.use(withRole(UserRole.Realtor), realtorRouter);
+};
 
 const registerAuthenticatedRoutes = (router: Router) => {
     const authRouter = Router();
@@ -72,6 +71,13 @@ const registerAuthenticatedRoutes = (router: Router) => {
     authRouter.patch("/users/:id", handleErrors(userController.update));
     authRouter.delete("/users/:id", handleErrors(userController.delete));
 
+    const propertyController = new PropertyController();
+    authRouter.get("/propertiesbuy", handleErrors(propertyController.allBuy));
+    authRouter.get("/propertiesrent", handleErrors(propertyController.allRent));
+    authRouter.get("/properties/:id", handleErrors(propertyController.find));
+    
+    registerRealtorRoutes(authRouter);
+    
     registerAdminRoutes(authRouter);
 
     // authenticated routes use authJWT
