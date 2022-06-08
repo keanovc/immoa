@@ -5,7 +5,7 @@ export default function Footer() {
     const { t } = useTranslation();
 
     return (
-        <footer className="p-4 bg-white shadow md:px-6 md:py-8 dark:bg-gray-800">
+        <footer className="p-4 bg-gray-800 shadow  mt-10 md:mt-0 md:px-6 md:py-8">
             <div className="flex items-center justify-center">
                 <a href="#up" className="flex items-center w-32">
                     <img src={images.logowhite} alt="logo" />

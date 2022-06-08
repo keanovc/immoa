@@ -10,7 +10,6 @@ import Signin from './Auth/Signin/Signin';
 import Buy from './Screens/Buy/Buy';
 import Rent from './Screens/Rent/Rent';
 import Detail from './Screens/Detail/Detail';
-import Contact from './Screens/Contact/Contact';
 
 import OnboardingLayout from './Auth/OnboardingLayout';
 import ProfileLayout from './Auth/ProfileLayout';
@@ -55,7 +54,6 @@ function App() {
             <Route path={HomeRoutes.Index} element={<Home />} />
             <Route path={HomeRoutes.Buy} element={<Buy />} />
             <Route path={HomeRoutes.Rent} element={<Rent />} />
-            <Route path={HomeRoutes.Contact} element={<Contact />} />
             <Route path={HomeRoutes.Detail} element={<Detail />} />
 
             

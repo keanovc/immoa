@@ -4,7 +4,7 @@ import DeleteButton from "../../App/Shared/Button/DeleteButton";
 import { AiFillEye } from "react-icons/ai";
 import PropTypes from "prop-types";
 
-const Table = ({ data = [], handleDelete, add, button, detail, group }) => {
+const Table = ({ data = [], onSuccess, add, button, detail, group }) => {
     return (
         <div className="container flex justify-center mx-auto mt-36 mb-10 px-5">
             <div className="w-full flex flex-col">
@@ -76,7 +76,7 @@ const Table = ({ data = [], handleDelete, add, button, detail, group }) => {
                                                     })
                                                 }
                                                 <td className="px-6 py-5 text-xs text-left text-gray-700">
-                                                    <DeleteButton onSuccess={handleDelete} id={item.id} scope={group} />
+                                                    <DeleteButton onSuccess={onSuccess} id={item.id} scope={group} />
                                                 </td>
                                             </tr>
                                         ))

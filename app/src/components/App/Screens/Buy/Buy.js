@@ -16,14 +16,14 @@ const Buy = () => {
             <header id="up" className="buy bg-center bg-no-repeat bg-cover h-[70vh] md:h-[40vh] relative">
                 <div className="h-full bg-opacity-50 bg-black flex items-center justify-center flex-col">
                     <div className="mx-2 mt-20 text-center">
-                        <p className="text-gray-200 mb-4 text-4xl font-bold leading-tight">
+                        <p className="text-gray-200 mb-4 text-2xl md:text-4xl font-bold leading-tight">
                             {t('properties.buy.text')}
                         </p>
                         {
                             !auth ? (
                                 <div className="flex w-7/12 m-auto">
-                                    <p className="text-gray-200 mb-4 text-2xl leading-tight">
-                                        If you want to see where the property is located or who the realtor is that is selling this property sign up.
+                                    <p className="text-gray-200 mb-4 text-lg md:text-2xl leading-tight">
+                                        {t('properties.buy.textpublic')}
                                     </p>
                                 </div>
                             ) : (
@@ -36,13 +36,13 @@ const Buy = () => {
 
             <div id="houses" className="container mx-auto grid gap-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-10">
                 {
-                    data ? data.map(property => (
+                    data ? data.length > 0 ? data.map(property => (
                         <Card key={property.id} property={property} auth={auth} />
                     )) : <div className="w-full h-full flex items-center justify-center">
-                            <p className="text-gray-200 mb-4 text-2xl font-bold leading-tight">
-                                No properties found.
+                            <p className="text-gray-800 mb-4 text-lg md:text-2xl font-bold leading-tight">
+                                {t('properties.noproperties')}
                             </p>
-                        </div>
+                        </div> : null
                 }
             </div>
         </>

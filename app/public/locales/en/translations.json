@@ -15,6 +15,8 @@
         "contact": "Contact",
         "favorites": "Favorites",
         "profile": "Profile",
+        "dashboard": "Dashboard",
+        "logout": "Logout",
         "agency": {
             "properties": "Properties"
         },
@@ -72,16 +74,19 @@
         "title": "Properties",
         "buy": {
             "title": "Buy",
-            "text": "BUY A HOME WITH US"
+            "text": "BUY A HOME WITH US",
+            "textpublic": "If you want to see where the property is located or who the realtor is that is selling this property sign up."
         },
         "rent": {
             "title": "Rent",
-            "text": "RENT A HOME WITH US"
+            "text": "RENT A HOME WITH US",
+            "textpublic": "If you want to see where the property is located or who the realtor is that is renting this property sign up."
         },
         "edit": "Edit Property",
         "create": "Create Property",
         "sold": "Sold",
-        "available": "Available"
+        "available": "Available",
+        "noproperties": "No properties found"
     },
     "agencies": {
         "title": "Agencies",
@@ -94,7 +99,9 @@
             "actions": "Actions"
         },
         "edit": "Edit Agency",
-        "create": "Create Agency"
+        "create": "Create Agency",
+        "noproperties": "No properties",
+        "norealtors": "No realtors"
     },
     "buttons": {
         "signout": "Sign Out",
@@ -108,7 +115,8 @@
         "adduser": "Add User",
         "addproperty": "Add Property",
         "addagency": "Add Agency",
-        "back": "Back"
+        "back": "Back",
+        "delete": "Delete"
     },
     "fields": {
         "email": "Email",
@@ -135,6 +143,9 @@
         "buy": "Buy",
         "rent": "Rent",
         "agency": "Agency",
+        "properties": "Properties",
+        "realtors": "Realtors",
+        "bedrooms": "Bedrooms",
         "type": {
             "house": "House",
             "mansion": "Mansion",

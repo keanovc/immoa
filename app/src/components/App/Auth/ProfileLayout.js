@@ -1,6 +1,8 @@
 import { Navigate, Outlet, useParams, useLocation } from "react-router-dom";
 import useFetch from "../../../core/hooks/useFetch";
 import { useAuthContext } from "./AuthProvider";
+import Alert from "../../Design/Alert/Alert";
+import LoadingIndicator from "../../Design/LoadingIndicator/LoadingIndicator";
 
 const ProfileLayout = () => {
     const { id } = useParams();
@@ -26,11 +28,13 @@ const ProfileLayout = () => {
     };
 
     if (error) {
-        return <div>Error!</div>;
+        return <div className="mt-36 w-4/12 mx-auto">
+            <Alert color="danger">{error}</Alert>
+        </div>
     }
 
     if (isLoading) {
-        return <div>Loading... </div>;
+        return <LoadingIndicator />;
     }
 
     return <Outlet context={{ user, onUserUpdate: handleUpdate }} />;
