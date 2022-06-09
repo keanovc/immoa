@@ -11,8 +11,6 @@ const Rent = () => {
     const { auth } = useAuthContext();
     const { data } = useFetch(auth ? `/propertiesrent` : `/propertiesrentpublic`);
 
-    console.log(data);
-
     return (
         <>
             <header id="up" className="rent bg-center bg-no-repeat bg-cover h-[70vh] md:h-[40vh] relative">

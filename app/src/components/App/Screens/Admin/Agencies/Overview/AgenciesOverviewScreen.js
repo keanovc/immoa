@@ -12,6 +12,7 @@ const AgenciesOverviewScreen = () => {
 
     if (agencies) {
         agencies.map(item => {
+            delete item.id;
             delete item.description;
             delete item.properties;
             delete item.users;

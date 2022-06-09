@@ -30,8 +30,4 @@ const PasswordInput = ({onChange, value, error}) => {
   )
 }
 
-PasswordInput.propTypes = {
-  ...Input.propTypes,
-};
-
 export default PasswordInput

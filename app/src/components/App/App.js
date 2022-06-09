@@ -23,6 +23,10 @@ import RoleContainer from './Auth/RoleContainer';
 
 import AgencyPropertiesLayout from './Screens/Agency/Properties/AgencyPropertiesLayout';
 import AgencyPropertiesOverviewScreen from './Screens/Agency/Properties/Overview/AgencyPropertiesOverviewScreen';
+import AgencyPropertyDetailLayout from './Screens/Agency/Properties/Detail/AgencyPropertyDetailLayout';
+import AgencyPropertyDetailScreen from './Screens/Agency/Properties/Detail/AgencyPropertyDetailScreen';
+import AgencyPropertyAddScreen from './Screens/Agency/Properties/Add/AgencyPropertyAddScreen';
+import AgencyPropertyEditScreen from './Screens/Agency/Properties/Edit/AgencyPropertyEditScreen';
 
 import UsersLayout from './Screens/Admin/Users/UsersLayout';
 import UsersOverviewScreen from './Screens/Admin/Users/Overview/UsersOverviewScreen';
@@ -126,6 +130,11 @@ function App() {
               path={AgencyRoutes.Properties}
               element={<AgencyPropertiesLayout />}>
               <Route index element={<AgencyPropertiesOverviewScreen />} />
+              <Route path={AgencyRoutes.AddProperty} element={<AgencyPropertyAddScreen />} />
+              <Route path={AgencyRoutes.DetailProperty} element={<AgencyPropertyDetailLayout />}>
+                <Route index element={<AgencyPropertyDetailScreen />} />
+                <Route path={AgencyRoutes.EditProperty} element={<AgencyPropertyEditScreen />} />
+              </Route>
             </Route>
           </Route>
           

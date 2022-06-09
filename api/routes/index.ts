@@ -36,18 +36,17 @@ const registerAdminRoutes = (router: Router) => {
 
     const userController = new UserController();
     adminRouter.get("/users", handleErrors(userController.all));
+    adminRouter.post("/users", handleErrors(userController.create));
     adminRouter.get("/users/:id", handleErrors(userController.find));
 
     const propertyController = new PropertyController();
     adminRouter.get("/properties", handleErrors(propertyController.all));
     adminRouter.post("/properties", handleErrors(propertyController.create));
-    adminRouter.patch("/properties/:id", handleErrors(propertyController.update));
-    adminRouter.delete("/properties/:id", handleErrors(propertyController.delete));
 
     const agencyController = new AgencyController();
     adminRouter.get("/agencies", handleErrors(agencyController.all));
-    adminRouter.get("/agencies/:id", handleErrors(agencyController.find));
     adminRouter.post("/agencies", handleErrors(agencyController.create));
+    adminRouter.get("/agencies/:id", handleErrors(agencyController.find));
     adminRouter.patch("/agencies/:id", handleErrors(agencyController.update));
     adminRouter.delete("/agencies/:id", handleErrors(agencyController.delete));
 
@@ -58,7 +57,10 @@ const registerRealtorRoutes = (router: Router) => {
     const realtorRouter = Router();
 
     const propertyController = new PropertyController();
-    realtorRouter.get("/propertiesbyagency", handleErrors(propertyController.allByAgency));
+    realtorRouter.get("/propertiesbyagency/:id", handleErrors(propertyController.allByAgency));
+    realtorRouter.post("/propertiesbyagency", handleErrors(propertyController.createByAgency));
+    realtorRouter.patch("/properties/:id", handleErrors(propertyController.update));
+    realtorRouter.delete("/properties/:id", handleErrors(propertyController.delete));
 
     router.use(withRole(UserRole.Realtor), realtorRouter);
 };

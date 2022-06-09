@@ -80,17 +80,18 @@ const ProfileForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 error={errors.email}
             />
 
-            <Label htmlFor="password">{t('fields.password')}</Label>
-            <PasswordInput
-                value={values.password}
-                onChange={handleChange}
-                error={errors.password}
-            />
-            {isUpdate && (
-                <p className="text-gray-400 mb-5">
-                    {t("users.password_print")}
-                </p>
-            )}
+            {
+                !initialData && (
+                    <>
+                        <Label htmlFor="password">{t('fields.password')}</Label>
+                        <PasswordInput
+                            value={values.password}
+                            onChange={handleChange}
+                            error={errors.password}
+                        />
+                    </>
+                )
+            }
 
             <Button type={'submit'} disabled={disabled}>
                 {t('buttons.edit')}

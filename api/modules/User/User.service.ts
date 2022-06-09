@@ -1,5 +1,6 @@
 import { UserBody } from './User.types';
 import User from "./User.entity";
+import ConflictError from '../../errors/ConflictError';
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../database/DataSource";
 import { createToken } from '../../middleware/auth';
@@ -13,14 +14,20 @@ export default class UserService {
     }
 
     all = async () => {
-        const users = await this.repository.find(
-            { relations: ["agency"] }
-        );
+        const users = await this.repository.find({ 
+            relations: ["agency"],
+            order: {
+                updatedAt: "ASC"
+            }
+        });
         return users;
     };
 
     findOne = async (id: number) => {
-        const user = await this.repository.findOneBy({ id });
+        const user = await this.repository.findOne({
+            where: { id },
+            relations: ["agency"],
+        });
         return user;
     };
 
@@ -50,6 +57,7 @@ export default class UserService {
             }
             return obj;
         }
+        throw new ConflictError();
     };
 
     update = async (id: number, body: UserBody) => {

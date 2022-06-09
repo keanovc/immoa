@@ -8,6 +8,7 @@ import { AuthRequest } from "../../middleware/auth/auth.types";
 import { PropertyBody } from "./Property.types";
 import PropertyService from "./Property.service";
 import AgencyService from "../Agency/Agency.service";
+import UserService from "../User/User.service";
 
 const getImage = (req: Request) => {
     if (req.files.image) {
@@ -24,18 +25,13 @@ const getImage = (req: Request) => {
 export default class PropertyController {
     private propertyService: PropertyService;
     private agencyService: AgencyService;
+    private userService: UserService;
 
     constructor() {
         this.propertyService = new PropertyService();
         this.agencyService = new AgencyService();
+        this.userService = new UserService();
     }
-
-    // all = async (req: AuthRequest, res: Response, next: NextFunction) => {
-    //     const properties = req.user.isAdmin()
-    //         ? await this.propertyService.all()
-    //         : await this.propertyService.allByAgency(req.user.agency.id);
-    //     return res.json(properties);
-    // }
 
     all = async (req: AuthRequest, res: Response, next: NextFunction) => {
         const properties = await this.propertyService.all();
@@ -43,13 +39,17 @@ export default class PropertyController {
     }
 
     allByAgency = async (
-        req: AuthRequest, 
+        req: Request<{ id: number }>,
         res: Response, 
         next: NextFunction
     ) => {
-        console.log(req.user);
+        const user = await this.userService.findOne(req.params.id);
         
-        const properties = await this.propertyService.allByAgency(req.user.agency.id);
+        if (!user) {
+            next(new NotFoundError());
+            return;
+        }
+        const properties = await this.propertyService.allByAgency(user.agency.id);
         return res.json(properties);
     }
 
@@ -121,7 +121,30 @@ export default class PropertyController {
         if (body.agencyId) {
             body.agency = await this.agencyService.findOne(body.agencyId);
         }
+
         const property = await this.propertyService.create(body);
+        return res.json(property);
+    }
+
+    createByAgency = async (
+        req: Request<{}>,
+        res: Response,
+        next: NextFunction
+    ) => {
+        const user = await this.userService.findOne(req.body.userId);
+
+        const image = getImage(req);
+        
+        if (image) {
+            req.body.image = image;
+        }
+
+        const body: PropertyBody = {
+            ...req.body,
+            agency: user.agency,
+        };
+
+        const property = await this.propertyService.createByAgency(body, user.agency.id);
         return res.json(property);
     }
 

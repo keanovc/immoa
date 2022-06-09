@@ -2,10 +2,10 @@ import { useTranslation } from "react-i18next";
 import { Link, useOutletContext } from "react-router-dom";
 import { getImagePath } from "../../../../../../core/helpers/api";
 import useTitle from "../../../../../../core/hooks/useTitle";
-import { AdminRoutes, route } from "../../../../../../core/routing";
+import { AgencyRoutes, route } from "../../../../../../core/routing";
 import { formatPrice } from "../../../../../../core/modules/users/utils";
 
-const PropertyDetailScreen = () => {
+const AgencyPropertyDetailScreen = () => {
     const { t } = useTranslation();
     const { property } = useOutletContext();
 
@@ -41,12 +41,12 @@ const PropertyDetailScreen = () => {
                         </div>
                         <hr className="border-gray-300 my-4"/>
                         <div className="flex items-center justify-around">
-                            <Link to={route(AdminRoutes.Properties)}>
+                            <Link to={route(AgencyRoutes.Properties)}>
                                 <div className="bg-gray-600 px-8 py-2 rounded-3xl text-gray-100 font-semibold uppercase tracking-wide transition duration-300 hover:scale-105 ease-in-out hover:bg-gray-800">
                                     {t("buttons.back")}
                                 </div>
                             </Link>
-                            <Link to={route(AdminRoutes.EditProperty, { id: property.id })}>
+                            <Link to={route(AgencyRoutes.EditProperty, { id: property.id })}>
                                 <div className="bg-indigo-600 px-8 py-2 rounded-3xl text-gray-100 font-semibold uppercase tracking-wide transition duration-300 hover:scale-105 ease-in-out hover:bg-indigo-800">
                                     {t("buttons.edit")}
                                 </div>
@@ -59,4 +59,4 @@ const PropertyDetailScreen = () => {
     );
 };
 
-export default PropertyDetailScreen;
+export default AgencyPropertyDetailScreen;

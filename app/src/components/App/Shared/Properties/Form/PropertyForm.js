@@ -9,6 +9,8 @@ import AgencySelect from "../../Agencies/Select/AgencySelect";
 import FileInput from "../../../../Design/Form/FileInput";
 import Button from "../../../../Design/Button/Button";
 import Label from "../../../../Design/Form/Label";
+import { isAdmin } from "../../../../../core/modules/users/utils";
+import { useAuthContext } from "../../../Auth/AuthProvider";
 
 const schema = yup.object().shape({
     zipCode: yup.string().required("Zip code is required"),
@@ -23,7 +25,7 @@ const schema = yup.object().shape({
     image: yup.string().required("Image is required"),
     type: yup.string().required("Type is required"),
     bor: yup.string().required("Required"),
-    agencyId: yup.number().nullable().required("Agency is required"),
+    agencyId: yup.number().nullable(),
 });
 
 const transformInitialData = (initialData) => {
@@ -59,6 +61,8 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
         ...transformInitialData(initialData),
     });
 
+    const { auth } = useAuthContext();
+
     const handleData = (values) => {
         onSubmit(values);
     };
@@ -91,13 +95,19 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 />
             </div>
             <div className="flex flex-wrap -mx-3 mb-3 px-3">
-                <Label htmlFor="agencyId">{t('fields.agency')}</Label>
-                <AgencySelect
-                    name="agencyId"
-                    value={values.agencyId}
-                    onChange={handleChange}
-                    error={errors.agencyId}
-                />
+                {
+                    isAdmin(auth.user) ? (
+                        <>
+                            <Label htmlFor="agencyId">{t('fields.agency')}</Label>
+                            <AgencySelect
+                                name="agencyId"
+                                value={values.agencyId}
+                                onChange={handleChange}
+                                error={errors.agencyId}
+                            />
+                        </>
+                    ) : null
+                }
             </div>
             <div className="flex flex-wrap -mx-3 mb-3">
                 <div className="w-full px-3 md:w-1/2">
@@ -251,20 +261,6 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     disabled={disabled}
                 />
             </div>
-            {/* <div className="flex flex-wrap -mx-3 mb-3">
-                <div className="w-full px-3 md:w-1/2">
-                    <input type="radio" value="false" name="sold" /> Available
-                    <input type="radio" value="true" name="sold" /> Sold
-                </div>
-                <div className="w-full px-3 md:w-1/2">
-                    <Button
-                        type={'submit'}
-                        disabled={disabled}
-                    >
-                        {label}
-                    </Button>
-                </div>
-            </div> */}
             <Button
                 type={'submit'}
                 disabled={disabled}

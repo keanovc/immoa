@@ -137,20 +137,21 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
             }
             <div className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full px-3">
-                    <Label htmlFor="password">{t("fields.password")}</Label>
-                    <PasswordInput
-                        name="password"
-                        placeholder={t('fields.password')}
-                        value={values.password}
-                        onChange={handleChange}
-                        error={errors.password}
-                        disabled={disabled}
-                    />
-                    {isUpdate && (
-                        <p className="text-muted">
-                            {t("users.password_print")}
-                        </p>
-                    )}
+                    {
+                        !initialData.id && (
+                            <>
+                                <Label htmlFor="password">{t("fields.password")}</Label>
+                                <PasswordInput
+                                    name="password"
+                                    placeholder={t('fields.password')}
+                                    value={values.password}
+                                    onChange={handleChange}
+                                    error={errors.password}
+                                    disabled={disabled}
+                                />
+                            </>
+                        )
+                    }
                 </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">

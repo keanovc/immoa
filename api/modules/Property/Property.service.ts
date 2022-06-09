@@ -1,4 +1,5 @@
 import Property from "./Property.entity";
+import ConflictError from "../../errors/ConflictError";
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../database/DataSource";
 import { PropertyBody } from "./Property.types";
@@ -13,18 +14,24 @@ export default class PropertyService {
 
     all = async () => {
         const properties = await this.repository.find({
-            relations: ["agency"]
+            relations: ["agency"],
+            order: {
+                updatedAt: "ASC"
+            }
         });
         return properties;
     }
 
-    allByAgency = async (agencyId: number) => {
+    allByAgency = async (id: number) => {
         const properties = await this.repository.find({
+            where: { agency: { id } },
             relations: ["agency"],
-            where: { agency: { id: agencyId } }
+            order: {
+                updatedAt: "ASC"
+            }
         });
         return properties;
-    }
+    };
 
     allBuy = async () => {
         const properties = await this.repository.find({
@@ -90,10 +97,24 @@ export default class PropertyService {
     create = async (body: PropertyBody) => {
         const property = await this.findOneBy({ address: body.address });
         if (property) {
-            return console.error("Property already exists");
+            throw new ConflictError();
         }
         const newProperty = await this.repository.save(
             this.repository.create(body)
+        );
+        return newProperty;
+    }
+
+    createByAgency = async (body: PropertyBody, agencyId: number) => {
+        const property = await this.findOneBy({ address: body.address });
+        if (property) {
+            throw new ConflictError();
+        }
+        const newProperty = await this.repository.save(
+            this.repository.create({
+                ...body,
+                agency: { id: agencyId }
+            })
         );
         return newProperty;
     }

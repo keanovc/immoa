@@ -1,4 +1,5 @@
 import { AppDataSource } from "../../database/DataSource";
+import ConflictError from "../../errors/ConflictError";
 import { Repository } from "typeorm";
 import Agency from "./Agency.entity";
 import { AgencyBody } from "./Agency.types";
@@ -12,7 +13,10 @@ export default class AgencyService {
 
     all = async () => {
         const agencies = await this.agencyRepository.find({
-            relations: ["properties", "users"]
+            relations: ["properties", "users"],
+            order: {
+                updatedAt: "ASC"
+            }
         });
         return agencies;
     }
@@ -26,10 +30,16 @@ export default class AgencyService {
     }
 
     create = async (body: AgencyBody) => {
-        const agency = await this.agencyRepository.save(
+        const existing = await this.agencyRepository.findOne({
+            where: { name: body.name }
+        });
+        if (existing) {
+            throw new ConflictError();
+        }
+        const newAgency = await this.agencyRepository.save(
             this.agencyRepository.create(body)
         );
-        return agency;
+        return newAgency;
     }
 
     update = async (id: number, body: AgencyBody) => {
