@@ -8,6 +8,7 @@ import Textarea from "../../../../Design/Form/Textarea";
 import AgencySelect from "../../Agencies/Select/AgencySelect";
 import FileInput from "../../../../Design/Form/FileInput";
 import Button from "../../../../Design/Button/Button";
+import Label from "../../../../Design/Form/Label";
 
 const schema = yup.object().shape({
     zipCode: yup.string().required("Zip code is required"),
@@ -75,6 +76,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 />
             )}
             <div className="flex flex-wrap -mx-3 mb-3 px-3">
+                <Label htmlFor="sold">{t('fields.availability')}</Label>
                 <Select
                     name="sold"
                     label={t('properties.sold')}
@@ -89,6 +91,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 />
             </div>
             <div className="flex flex-wrap -mx-3 mb-3 px-3">
+                <Label htmlFor="agencyId">{t('fields.agency')}</Label>
                 <AgencySelect
                     name="agencyId"
                     value={values.agencyId}
@@ -98,6 +101,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
             </div>
             <div className="flex flex-wrap -mx-3 mb-3">
                 <div className="w-full px-3 md:w-1/2">
+                    <Label htmlFor="city">{t('fields.city')}</Label>
                     <Input
                         type={'text'}
                         name="city"
@@ -109,6 +113,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     />
                 </div>
                 <div className="w-full px-3 md:w-1/2">
+                    <Label htmlFor="zipCode">{t('fields.zipcode')}</Label>
                     <Input
                         type={'text'}
                         name="zipCode"
@@ -122,6 +127,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
             </div>
             <div className="flex flex-wrap -mx-3 mb-3">
                 <div className="w-full px-3 md:w-1/2">
+                    <Label htmlFor="address">{t('fields.address')}</Label>
                     <Input 
                         type={'text'}
                         name="address"
@@ -133,6 +139,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     />
                 </div>
                 <div className="w-full px-3 md:w-1/2">
+                    <Label htmlFor="price">{t('fields.price')}</Label>
                     <Input 
                         type={'number'}
                         name="price"
@@ -146,6 +153,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
             </div>
             <div className="flex flex-wrap -mx-3 mb-3">
                 <div className="w-full px-3 md:w-1/2">
+                    <Label htmlFor="rooms">{t('fields.rooms')}</Label>
                     <Input
                         type={'number'}
                         name="rooms"
@@ -157,6 +165,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     />
                 </div>
                 <div className="w-full px-3 md:w-1/2">
+                    <Label htmlFor="bathrooms">{t('fields.bathrooms')}</Label>
                     <Input 
                         type={'number'}
                         name="bathrooms"
@@ -170,6 +179,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
             </div>
             <div className="flex flex-wrap -mx-3 mb-3">
                 <div className="w-full px-3 md:w-1/2">
+                    <Label htmlFor="area">{t('fields.area')}</Label>
                     <Input 
                         type={'number'}
                         name="area"
@@ -181,6 +191,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     />
                 </div>
                 <div className="w-full px-3 md:w-1/2">
+                    <Label htmlFor="year">{t('fields.year')}</Label>
                     <Input 
                         type={'number'}
                         name="year"
@@ -194,6 +205,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
             </div>
             <div className="flex flex-wrap -mx-3 mb-3">
                 <div className="w-full px-3 md:w-1/2">
+                    <Label htmlFor="type">{t('fields.typeLabel')}</Label>
                     <Select
                         name="type"
                         label={t('fields.type')}
@@ -214,6 +226,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     />
                 </div>
                 <div className="w-full px-3 md:w-1/2">
+                    <Label htmlFor="status">{t('fields.status')}</Label>
                     <Select
                         name="bor"
                         value={values.bor}
@@ -228,6 +241,7 @@ const PropertyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-3 px-3">
+                <Label htmlFor="description">{t('fields.description')}</Label>
                 <Textarea
                     name="description"
                     value={values.description}

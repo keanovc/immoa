@@ -146,6 +146,10 @@
         "properties": "Properties",
         "realtors": "Realtors",
         "bedrooms": "Bedrooms",
+        "availability": "Availability",
+        "status": "Status",
+        "role": "Role",
+        "typeLabel": "Type",
         "type": {
             "house": "House",
             "mansion": "Mansion",

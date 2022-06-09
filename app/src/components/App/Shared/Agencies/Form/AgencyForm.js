@@ -4,6 +4,7 @@ import Input from "../../../../Design/Form/Input";
 import * as yup from "yup";
 import Textarea from "../../../../Design/Form/Textarea";
 import Button from "../../../../Design/Button/Button";
+import Label from "../../../../Design/Form/Label";
 
 const schema = yup.object().shape({
     name: yup.string().required(),
@@ -40,6 +41,7 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
             <h1 className="mb-16 text-3xl text-center">{label}</h1>
             <div className="flex flex-wrap -mx-3 mb-3">
                 <div className="w-full px-3 md:w-1/2">
+                    <Label htmlFor="name">{t("fields.name")}</Label>
                     <Input 
                         type={'text'}
                         name="name"
@@ -51,6 +53,7 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     />
                 </div>
                 <div className="w-full px-3 md:w-1/2">
+                    <Label htmlFor="phone">{t("fields.phone")}</Label>
                     <Input
                         type={'number'}
                         name="phone"
@@ -64,6 +67,7 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
             </div>
             <div className="flex flex-wrap -mx-3 mb-3">
                 <div className="w-full px-3 md:w-1/2">
+                    <Label htmlFor="zipCode">{t("fields.zipcode")}</Label>
                     <Input 
                         type={'number'}
                         name="zipCode"
@@ -75,6 +79,7 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     />
                 </div>
                 <div className="w-full px-3 md:w-1/2">
+                    <Label htmlFor="city">{t("fields.city")}</Label>
                     <Input 
                         type={'text'}
                         name="city"
@@ -87,6 +92,7 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-3 px-3">
+                <Label htmlFor="address">{t("fields.address")}</Label>
                 <Input 
                     type={'text'}
                     name="address"
@@ -98,6 +104,7 @@ const AgencyForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 />
             </div>
             <div className="flex flex-wrap -mx-3 mb-3 px-3">
+                <Label htmlFor="description">{t("fields.description")}</Label>
                 <Textarea
                     name="description"
                     value={values.description}

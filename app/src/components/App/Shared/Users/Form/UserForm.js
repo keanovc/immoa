@@ -6,6 +6,7 @@ import PasswordInput from "../../../../Design/Form/PasswordInput";
 import Select from "../../../../Design/Form/Select";
 import AgencySelect from "../../Agencies/Select/AgencySelect";
 import Button from "../../../../Design/Button/Button";
+import Label from "../../../../Design/Form/Label";
 
 // dynamic schema
 const getSchema = (isUpdate) => {
@@ -66,6 +67,7 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
             <h1 className="mb-16 text-3xl text-center">{label}</h1>
             <div className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <Label htmlFor="name">{t("fields.firstname")}</Label>
                     <Input
                         type="text"
                         name="name"
@@ -77,6 +79,7 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     />
                 </div>
                 <div className="w-full md:w-1/2 px-3">
+                    <Label htmlFor="surname">{t("fields.lastname")}</Label>
                     <Input
                         type="text"
                         name="surname"
@@ -90,6 +93,7 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full px-3 md:w-1/2">
+                    <Label htmlFor="email">{t("fields.email")}</Label>
                     <Input
                         type="email"
                         name="email"
@@ -101,6 +105,7 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     />
                 </div>
                 <div className="w-full px-3 md:w-1/2">
+                    <Label htmlFor="role">{t("fields.role")}</Label>
                     <Select
                         name="role"
                         options={[
@@ -119,6 +124,7 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 values.role === "REALTOR" && (
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full px-3">
+                            <Label htmlFor="agencyId">{t("fields.agency")}</Label>
                             <AgencySelect
                                 name="agencyId"
                                 value={values.agencyId}
@@ -131,6 +137,7 @@ const UserForm = ({ initialData = {}, disabled, onSubmit, label }) => {
             }
             <div className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full px-3">
+                    <Label htmlFor="password">{t("fields.password")}</Label>
                     <PasswordInput
                         name="password"
                         placeholder={t('fields.password')}

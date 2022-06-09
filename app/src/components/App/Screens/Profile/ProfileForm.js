@@ -4,6 +4,7 @@ import PasswordInput from "../../../Design/Form/PasswordInput";
 import * as yup from "yup";
 import useForm from "../../../../core/hooks/useForm";
 import Button from "../../../Design/Button/Button";
+import Label from "../../../Design/Form/Label";
 
 const getSchema = (isUpdate) => {
     return yup.object().shape({
@@ -49,6 +50,7 @@ const ProfileForm = ({ initialData = {}, disabled, onSubmit, label }) => {
         <form onSubmit={handleSubmit(handleData)} className="w-96 mx-auto bg-black rounded-2xl px-8 py-6 shadow-lg bg-opacity-60 backdrop-filter backdrop-blur-xl">
             <h1 className="mb-8 text-3xl text-center text-white">{t('profile.edit')}</h1>
 
+            <Label htmlFor="name">{t('fields.name')}</Label>
             <Input 
                 type={'text'}
                 name={'name'}
@@ -58,6 +60,7 @@ const ProfileForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 error={errors.name}
             />
 
+            <Label htmlFor="surname">{t('fields.surname')}</Label>
             <Input 
                 type={'text'}
                 name={'surname'}
@@ -67,6 +70,7 @@ const ProfileForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 error={errors.surname}
             />
 
+            <Label htmlFor="email">{t('fields.email')}</Label>
             <Input 
                 type={'text'}
                 name={'email'}
@@ -76,6 +80,7 @@ const ProfileForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                 error={errors.email}
             />
 
+            <Label htmlFor="password">{t('fields.password')}</Label>
             <PasswordInput
                 value={values.password}
                 onChange={handleChange}
