@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useOutletContext } from "react-router-dom";
 import useTitle from "../../../../../../core/hooks/useTitle";
 import { AdminRoutes, route } from "../../../../../../core/routing";
+import images from "../../../../constants/images";
 
 const AgencyDetailScreen = () => {
     const { t } = useTranslation();
@@ -13,7 +14,7 @@ const AgencyDetailScreen = () => {
         <>
             <div className="flex justify-center bg-gray-200 mt-36 mb-10">
                 <div className="bg-white font-semibold text-center rounded-3xl border shadow-lg p-10 w-10/12 lg:w-6/12 xl:w-3/12">
-                    <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto" src="https://ribboncommunications.com/sites/default/files/styles/large/public/person-placeholder_0.png?itok=LIcM1gRj" alt="person"/>
+                    <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto object-cover" src={images.building} alt="agency"/>
                     <h1 className="text-lg text-gray-700"> {agency.name} </h1>
                     <h3 className="text-sm text-gray-400 "> {agency.city} </h3>
                     <hr className="border-gray-300 my-4"/>

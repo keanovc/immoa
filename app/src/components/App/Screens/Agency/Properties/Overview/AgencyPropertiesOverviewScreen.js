@@ -3,6 +3,7 @@ import { AgencyRoutes } from "../../../../../../core/routing";
 import { useTranslation } from "react-i18next";
 import useFetch from "../../../../../../core/hooks/useFetch";
 import Alert from "../../../../../Design/Alert/Alert";
+import LoadingIndicator from "../../../../../Design/LoadingIndicator/LoadingIndicator";
 import { useAuthContext } from "../../../../Auth/AuthProvider";
 
 const AgencyPropertiesOverviewScreen = () => {
@@ -36,7 +37,7 @@ const AgencyPropertiesOverviewScreen = () => {
 
     return (
         isLoading ? (
-            <div>Loading</div>
+            <LoadingIndicator />
         ) : (
             <Table data={properties} onSuccess={handleDelete} add={AgencyRoutes.AddProperty} button={t('buttons.addproperty')} detail={AgencyRoutes.DetailProperty} group='properties'/>
         )

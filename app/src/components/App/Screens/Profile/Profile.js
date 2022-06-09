@@ -5,6 +5,7 @@ import { formatName } from "../../../../core/modules/users/utils";
 import { Link } from "react-router-dom";
 import { ProfileRoutes, route } from "../../../../core/routing";
 import Button from "../../../Design/Button/Button";
+import images from "../../constants/images";
 
 const Profile = () => {
     const { t } = useTranslation();
@@ -18,7 +19,7 @@ const Profile = () => {
                 <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center">
                     <section className="w-96 mx-auto bg-black rounded-2xl px-8 py-6 shadow-lg bg-opacity-60 backdrop-filter backdrop-blur-xl">
                         <div className="mt-6 w-fit mx-auto">
-                            <img src="https://www.pngkey.com/png/full/73-730477_first-name-profile-image-placeholder-png.png" className="rounded-full w-28" alt="profile" />
+                            <img src={images.placeholderProfile} className="rounded-full w-28" alt="profile" />
                         </div>
                         <div className="mt-8 ">
                             <h2 className="text-white font-bold text-2xl tracking-wide text-center">{user.name} {user.surname}</h2>

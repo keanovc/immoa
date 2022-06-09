@@ -12,7 +12,6 @@ const PropertiesOverviewScreen = () => {
 
     if (properties) {
         properties.map(item => {
-            delete item.id;
             delete item.description;
             delete item.image;
             delete item.price;

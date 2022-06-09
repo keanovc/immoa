@@ -23,7 +23,7 @@ const UserAddScreen = () => {
 
     return (
         <div className="w-10/12 lg:w-4/12 mx-auto mt-36">
-            {error && <Alert color="danger">{error}</Alert>}
+            {error && <Alert>{error}</Alert>}
             <UserForm
               onSubmit={handleSubmit}
               label={t("users.create")}

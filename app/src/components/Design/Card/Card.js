@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { route } from '../../../core/routing';
 import { getImagePath } from '../../../core/helpers/api';
 import PropTypes from "prop-types";
+import images from '../../App/constants/images';
 
 const Card = ({ property, auth }) => {
     return (
@@ -52,9 +53,9 @@ const Card = ({ property, auth }) => {
                             auth ?
                             <div className="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
                                 <div className="text-xs uppercase font-bold text-gray-600 tracking-wide">Agency</div>
-                                <div className="flex items-center pt-2">
-                                    <div className="bg-cover bg-center w-10 h-10 rounded-full mr-3">
-                                        <img src="https://ribboncommunications.com/sites/default/files/styles/large/public/person-placeholder_0.png?itok=LIcM1gRj" alt="agency" />
+                                <div className="flex items-center pt-5">
+                                    <div className="mr-5">
+                                        <img className='w-12 h-12 rounded-full shadow-lg mx-auto object-cover' src={images.building} alt="agency" />
                                     </div>
                                     <div>
                                         <p className="font-bold text-gray-900">{property.agency.name}</p>

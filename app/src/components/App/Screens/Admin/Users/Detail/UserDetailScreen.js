@@ -3,6 +3,7 @@ import { Link, useOutletContext } from "react-router-dom";
 import useTitle from "../../../../../../core/hooks/useTitle";
 import { AdminRoutes, route } from "../../../../../../core/routing";
 import { formatName } from "../../../../../../core/modules/users/utils";
+import images from "../../../../constants/images";
 
 const UserDetailScreen = () => {
     const { t } = useTranslation();
@@ -14,7 +15,7 @@ const UserDetailScreen = () => {
         <>
             <div className="flex items-center justify-center h-screen bg-gray-200">
                 <div className="bg-white font-semibold text-center rounded-3xl border shadow-lg p-10 max-w-xs w-96">
-                    <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Placeholder_no_text.svg/1200px-Placeholder_no_text.svg.png" alt="person"/>
+                    <img className="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto object-cover" src={images.placeholderProfile} alt="person"/>
                     <h1 className="text-lg text-gray-700"> {user.name} {user.surname} </h1>
                     <h3 className="text-sm text-gray-400 "> {user.role} </h3>
                     <p className="text-xs text-gray-400 mt-4"> {user.email} </p>

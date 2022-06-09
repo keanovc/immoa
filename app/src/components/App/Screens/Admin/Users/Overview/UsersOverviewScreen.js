@@ -10,13 +10,6 @@ const UsersOverviewScreen = () => {
 
     const { isLoading, data: users, error, invalidate } = useFetch("/users");
 
-    if (users) {
-        users.map(item => {
-            delete item.id;
-            return item;
-        });
-    }
-
     const handleDelete = () => {
         invalidate();
     };
