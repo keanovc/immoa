@@ -16,7 +16,7 @@ const AgencyPropertyDetailScreen = () => {
             <div className="flex justify-center bg-gray-200 mt-36 mb-10">
                 <div className="bg-white font-semibold text-center rounded-3xl border shadow-lg w-10/12 lg:w-6/12 xl:w-3/12">
                     <div className="relative">
-                        <img className="mb-3 w-full h-64 object-cover rounded-xl shadow-lg mx-auto" src={getImagePath(property.image)} alt="property"/>
+                        <img className="mb-3 w-full h-76 object-cover rounded-xl shadow-lg mx-auto" src={getImagePath(property.image)} alt="property"/>
                         {
                             property.sold === "yes" ?
                                 <div className="badge absolute top-5 right-5 bg-red-500 m-1 text-gray-200 p-1 px-2 text-md font-bold rounded">{t("properties.sold")}</div>
